@@ -1,4 +1,78 @@
+@import '../../app/mixins.css';
+@import '../../app/media.css';
+
 .header {
+  --gap: 16px;
+
   width: 100%;
   color: var(--color-main);
+}
+
+.wrapper {
+  display: grid;
+  max-width: var(--page-max-width);
+  padding: 26px var(--page-padding-x);
+  margin: 0 auto;
+  gap: var(--gap);
+  grid-template-columns: 1fr min-content min-content;
+}
+
+.contentWrapper {
+  position: fixed;
+  display: grid;
+  padding: 0 var(--page-padding-x);
+  background: var(--color-header-bg);
+  grid-template-rows: 1fr min-content;
+  inset: var(--header-height, 100px) 0 0;
+  transform: translateX(calc(-100% - var(--page-padding-x)));
+
+  @media (prefers-reduced-motion: no-preference) {
+    transition: transform 0.4s cubic-bezier(0.65, 0, 0.35, 1);
+  }
+}
+
+.icon {
+  @mixin link;
+  @mixin link-focus;
+
+  display: block;
+  width: 32px;
+  height: 32px;
+  color: var(--color-header-icon);
+
+  & svg {
+    width: 100%;
+    height: 100%;
+  }
+}
+
+@media (--viewport-medium-and-less) {
+  .contentWrapper.closed {
+    display: none;
+  }
+
+  .contentWrapper.open {
+    transform: translateX(calc(- var(--page-padding-x)));
+  }
+}
+
+@media (--viewport-medium) {
+  .header {
+    --gap: 24px;
+  }
+
+  .wrapper {
+    padding-top: 25px;
+    padding-bottom: 25px;
+  }
+
+  .contentWrapper {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    padding-right: 6px;
+    inset: unset;
+    transform: none;
+    transition: none;
+  }
 }

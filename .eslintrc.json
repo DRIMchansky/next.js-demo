@@ -13,7 +13,6 @@
     "no-multiple-empty-lines": ["error", { "max": 1, "maxEOF": 0 }],
     "indent": ["error", 2],
     "no-trailing-spaces": ["error"],
-    "space-unary-ops": ["error", { "words": true, "nonwords": true, "overrides": { "-": false } }],
     "no-unused-expressions": ["error", { "allowShortCircuit": true, "allowTernary": true, "allowTaggedTemplates": true }],
     "@typescript-eslint/no-unused-vars": ["error", { "vars": "all", "args": "all", "ignoreRestSiblings": true, "argsIgnorePattern": "^_" }],
     "space-before-function-paren": ["error", {

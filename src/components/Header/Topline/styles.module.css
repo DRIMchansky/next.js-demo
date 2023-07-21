@@ -1,3 +1,6 @@
+@import '../../../app/media.css';
+@import '../../../app/mixins.css';
+
 .topline {
   --padding-y: 9px;
 
@@ -21,7 +24,7 @@
   margin: 0 auto;
 }
 
-@media (min-width: 1024px) {
+@media (--viewport-medium) {
   .topline {
     --padding-y: 13px;
     font-size: 16px;
@@ -34,10 +37,14 @@
   }
 
   .callBack {
+    @mixin link-underline;
+    @mixin link-focus;
+
     position: absolute;
     right: var(--page-padding-x);
     display: inline-block;
     color: var(--color-topline-text);
+    text-decoration: none;
     transition: opacity var(--transition-link-hover);
     &:hover {
       opacity: var(--opacity-link-hover);

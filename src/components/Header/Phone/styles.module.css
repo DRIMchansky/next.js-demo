@@ -1,0 +1,56 @@
+@import '../../../app/mixins.css';
+@import '../../../app/media.css';
+
+.phone {
+  display: grid;
+  align-items: center;
+  margin-bottom: 40px;
+  gap: 8px;
+  grid-template-columns: min-content max-content 1fr;
+}
+
+.icon {
+  width: 18px;
+  height: 18px;
+  color: var(--color-header-accent);
+}
+
+.number {
+  @mixin link;
+  @mixin link-focus;
+
+  color: var(--color-header-text);
+  font-size: 14px;
+  text-decoration: none;
+}
+
+.callBack {
+  @mixin link;
+  @mixin link-focus;
+
+  color: var(--color-header-accent);
+  font-size: 16px;
+  font-weight: 500;
+  justify-self: flex-end;
+  letter-spacing: 1px;
+}
+
+@media (--viewport-medium) {
+  .phone {
+    margin: 0;
+    grid-template-columns: min-content max-content;
+  }
+
+  .icon {
+    width: 22px;
+    height: 22px;
+  }
+
+  .number {
+    font-size: 18px;
+  }
+
+  .callBack {
+    display: none;
+  }
+}
