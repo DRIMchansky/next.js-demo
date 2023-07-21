@@ -61,10 +61,10 @@ export const Header = () => {
           <Phone />
         </div>
 
-        <Link href="/" className={styles.icon}>
+        <Link href="/" className={styles.icon} aria-label="Favorite goods">
           <Icon id="heart" />
         </Link>
-        <Link href="/" className={styles.icon}>
+        <Link href="/" className={styles.icon} aria-label="Shopping cart">
           <Icon id="cart" />
         </Link>
       </div>
