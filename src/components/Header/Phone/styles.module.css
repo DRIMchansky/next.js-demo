@@ -4,7 +4,6 @@
 .phone {
   display: grid;
   align-items: center;
-  margin-bottom: 40px;
   gap: 8px;
   grid-template-columns: min-content max-content 1fr;
 }
@@ -37,7 +36,6 @@
 
 @media (--viewport-medium) {
   .phone {
-    margin: 0;
     grid-template-columns: min-content max-content;
   }
 

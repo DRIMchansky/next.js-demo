@@ -8,7 +8,7 @@ type Props = {
 
 export const Icon = ({ id, className }: Props) => {
   return (
-    <svg className={clsx(className)} height={24} width={24}>
+    <svg className={clsx(className)} height={24} width={24} aria-hidden="true">
       <use href={`/assets/icons.svg#${id}`} />
     </svg>
   )

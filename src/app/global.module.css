@@ -1,0 +1,5 @@
+:global(.mobile-menu-open) {
+  & .body {
+    overflow-y: hidden;
+  }
+}

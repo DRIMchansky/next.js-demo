@@ -1,10 +1,14 @@
 'use client'
 
 import React, { useEffect, useRef, useState } from 'react'
+import { useSearchParams } from 'next/navigation'
+import { usePathname } from 'next/navigation'
 import Link from 'next/link'
 import clsx from 'clsx'
 
-import { Navigation } from './Navigation'
+import { useWindowSize } from '@/app/hooks/use-window-size'
+import { Navigation, NavigationData } from './Navigation'
+import { HEADER_CHANGE_WIDTH } from '@/app/constants'
 import { Hamburger } from './Hamburger'
 import { Topline } from './Topline'
 import { Phone } from './Phone'
@@ -12,28 +16,49 @@ import { Icon } from '../Icon'
 
 import styles from './styles.module.css'
 
+const navigationData: NavigationData = [
+  { label: 'Главная', slug: '/' },
+  {
+    label: 'Каталог',
+    slug: '/catalog',
+    subitems: [
+      { label: 'Накладные электронные замки', slug: '/catalog?filter=filter-query1' },
+      { label: 'Врезные электронные замки', slug: '/catalog?filter=filter-query2' },
+      { label: 'Замки для квартиры', slug: '/catalog?filter=filter-query3' },
+      { label: 'Замки для дома', slug: '/catalog?filter=filter-query4' },
+      { label: 'Замки для отелей', slug: '/catalog?filter=filter-query5' },
+      { label: 'Замки для офиса', slug: '/catalog?filter=filter-query6' },
+      { label: 'Замки для шкафчиков', slug: '/catalog?filter=filter-query7' },
+      { label: 'Замки для раздевалок', slug: '/catalog?filter=filter-query8' },
+      { label: 'Смотреть все', slug: '/catalog', special: true }
+    ]
+  },
+  { label: 'Оптовая продажа', slug: '/wholesale' },
+  { label: 'О нас', slug: '/about' }
+]
+
 export const Header = () => {
   const [isMobileMenuOpened, setMobileMenuOpened] = useState(false)
   const [addClosedClass, setClosedClass] = useState(true)
   const [isAnimationInProgress, setAnimationInProgress] = useState(false)
 
-  const headerElement = useRef<HTMLElement>(null)
+  const isMobile = useWindowSize().width < HEADER_CHANGE_WIDTH
+  const path = usePathname()
+  const searchParams = useSearchParams().toString()
+  const headerElement = useRef<HTMLElement | null>(null)
+  const htmlElement = useRef<HTMLElement | null>(null)
 
   // set property for mobile menu top inset
   const updadeHeaderHeightProperty = () => {
     headerElement.current?.style.setProperty('--header-height', `${headerElement.current?.offsetHeight}px`)
   }
-  useEffect(() => {
-    updadeHeaderHeightProperty()
-    window.addEventListener('resize', updadeHeaderHeightProperty)
-  }, [])
 
   const handleTransitionEnd = () => {
     setAnimationInProgress(false)
     setClosedClass(!isMobileMenuOpened)
   }
 
-  const handleHamburgerClick = () => {
+  const toggleMobileMenu = () => {
     if (isAnimationInProgress) return
 
     setAnimationInProgress(true)
@@ -42,6 +67,25 @@ export const Header = () => {
     setTimeout(() => setMobileMenuOpened(prev => !prev), 20)
   }
 
+  // on mount
+  useEffect(() => {
+    updadeHeaderHeightProperty()
+    window.addEventListener('resize', updadeHeaderHeightProperty)
+
+    htmlElement.current = document.querySelector('html')
+  }, [])
+
+  // close mobile menu if path or params changed
+  useEffect(() => {
+    setClosedClass(true)
+    setMobileMenuOpened(false)
+  }, [path, searchParams])
+
+  // toggle class for prevent scroll when mobile modal is open
+  useEffect(() => {
+    htmlElement.current?.classList.toggle('mobile-menu-open', !addClosedClass)
+  }, [addClosedClass])
+
   return (
     <header className={styles.header} ref={headerElement}>
       <Topline />
@@ -49,7 +93,7 @@ export const Header = () => {
       <div className={styles.wrapper}>
         <Hamburger
           isMobileMenuOpened={isMobileMenuOpened}
-          onClick={handleHamburgerClick}
+          onClick={() => toggleMobileMenu()}
           disabled={isAnimationInProgress}
         />
 
@@ -57,8 +101,14 @@ export const Header = () => {
           className={clsx(styles.contentWrapper, isMobileMenuOpened && styles.open, addClosedClass && styles.closed)}
           onTransitionEnd={handleTransitionEnd}
         >
-          <Navigation />
-          <Phone />
+          <Navigation
+            data={navigationData}
+            isMobile={isMobile}
+            path={path}
+            searchParams={searchParams}
+            className={styles.navigation}
+          />
+          <Phone className={styles.phone} />
         </div>
 
         <Link href="/" className={styles.icon} aria-label="Favorite goods">

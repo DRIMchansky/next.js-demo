@@ -10,7 +10,7 @@
   border: none;
   border-radius: var(--outline-radius);
   background: none;
-  color: var(--color-header-icon);
+  color: var(--color-header-hamburger);
   cursor: pointer;
   justify-self: flex-start;
 
