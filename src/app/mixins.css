@@ -17,6 +17,11 @@
 
 @define-mixin link-underline {
   position: relative;
+  &:focus-visible {
+    &:before {
+      background: transparent;
+    }
+  }
   &:before {
     position: absolute;
     bottom: 0px;

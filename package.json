@@ -19,6 +19,7 @@
     "eslint": "8.45.0",
     "eslint-config-next": "^13.4.11",
     "eslint-config-prettier": "^8.8.0",
+    "focus-trap": "^7.5.2",
     "next": "13.4.11",
     "normalize.css": "^8.0.1",
     "postcss-import": "^15.1.0",

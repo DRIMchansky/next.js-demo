@@ -1,6 +1,7 @@
 'use client'
 
 import React, { useEffect, useRef, useState } from 'react'
+import { FocusTrap, createFocusTrap } from 'focus-trap'
 import { useSearchParams } from 'next/navigation'
 import { usePathname } from 'next/navigation'
 import Link from 'next/link'
@@ -47,6 +48,7 @@ export const Header = () => {
   const searchParams = useSearchParams().toString()
   const headerElement = useRef<HTMLElement | null>(null)
   const htmlElement = useRef<HTMLElement | null>(null)
+  const focusTrap = useRef<FocusTrap | null>(null)
 
   // set property for mobile menu top inset
   const updadeHeaderHeightProperty = () => {
@@ -64,7 +66,15 @@ export const Header = () => {
     setAnimationInProgress(true)
     setClosedClass(false)
 
-    setTimeout(() => setMobileMenuOpened(prev => !prev), 20)
+    setTimeout(
+      () =>
+        setMobileMenuOpened(prev => {
+          const next = !prev
+          next ? focusTrap.current?.activate() : focusTrap.current?.deactivate()
+          return next
+        }),
+      20
+    )
   }
 
   // on mount
@@ -73,12 +83,15 @@ export const Header = () => {
     window.addEventListener('resize', updadeHeaderHeightProperty)
 
     htmlElement.current = document.querySelector('html')
+
+    focusTrap.current = createFocusTrap(headerElement.current as HTMLElement)
   }, [])
 
   // close mobile menu if path or params changed
   useEffect(() => {
     setClosedClass(true)
     setMobileMenuOpened(false)
+    focusTrap.current?.deactivate()
   }, [path, searchParams])
 
   // toggle class for prevent scroll when mobile modal is open
