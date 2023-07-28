@@ -2,9 +2,9 @@ import localFont from 'next/font/local'
 import type { Metadata } from 'next'
 import clsx from 'clsx'
 
-import { Header } from '@/components/Header'
-import { Footer } from '@/components/Footer'
-import { Layout } from '@/components/Layout'
+import { Header } from '@/components/header'
+import { Footer } from '@/components/footer'
+import { Layout } from '@/components/layout'
 
 import styles from './styles/global.module.css'
 import './styles/globals.css'

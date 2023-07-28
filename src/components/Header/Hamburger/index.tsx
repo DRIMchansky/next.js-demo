@@ -1,8 +1,8 @@
 import React, { ButtonHTMLAttributes } from 'react'
 import clsx from 'clsx'
 
-import { InlineIconMenuClose } from '@/components/InlineIcon/MenuClose'
-import { InlineIconMenuOpen } from '@/components/InlineIcon/MenuOpen'
+import { InlineIconMenuClose } from '@/components/shared/inline-icon/menu-close'
+import { InlineIconMenuOpen } from '@/components/shared/inline-icon/menu-open'
 
 import styles from './styles.module.css'
 

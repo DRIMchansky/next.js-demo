@@ -1,7 +1,7 @@
 import React from 'react'
 import clsx from 'clsx'
 
-import { InlineIconPhone } from '@/components/InlineIcon/Phone'
+import { InlineIconPhone } from '@/components/shared/inline-icon/phone'
 
 import styles from './styles.module.css'
 

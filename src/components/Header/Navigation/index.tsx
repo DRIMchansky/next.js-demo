@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from 'react'
 import Link from 'next/link'
 import clsx from 'clsx'
 
-import { InlineIconCollapse } from '@/components/InlineIcon/Collapse'
+import { InlineIconCollapse } from '@/components/shared/inline-icon/collapse'
 import { SUBMENU_HIDE_DELAY } from '@/app/constants'
 
 import styles from './styles.module.css'
