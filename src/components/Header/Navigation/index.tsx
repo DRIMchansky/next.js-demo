@@ -2,8 +2,8 @@ import React, { useEffect, useRef, useState } from 'react'
 import Link from 'next/link'
 import clsx from 'clsx'
 
+import { InlineIconCollapse } from '@/components/InlineIcon/Collapse'
 import { SUBMENU_HIDE_DELAY } from '@/app/constants'
-import { Icon } from '@/components/Icon'
 
 import styles from './styles.module.css'
 
@@ -84,7 +84,7 @@ export const Navigation = ({ data, isMobile, path, searchParams, className }: Pr
                 onKeyDown={e => hasSubitems && handleExpandKeyDown(e, item.slug)}
               >
                 {item.label}
-                {hasSubitems && <Icon id="collapse" className={styles.collapseIcon} />}
+                {hasSubitems && <InlineIconCollapse className={styles.collapseIcon} />}
               </Link>
 
               {hasSubitems && (

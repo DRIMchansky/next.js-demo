@@ -9,11 +9,12 @@ import clsx from 'clsx'
 
 import { useWindowSize } from '@/app/hooks/use-window-size'
 import { Navigation, NavigationData } from './Navigation'
+import { InlineIconHeart } from '../InlineIcon/Heart'
 import { HEADER_CHANGE_WIDTH } from '@/app/constants'
+import { InlineIconCart } from '../InlineIcon/Cart'
 import { Hamburger } from './Hamburger'
 import { Topline } from './Topline'
 import { Phone } from './Phone'
-import { Icon } from '../Icon'
 
 import styles from './styles.module.css'
 
@@ -125,10 +126,10 @@ export const Header = () => {
         </div>
 
         <Link href="/" className={styles.icon} aria-label="Favorite goods">
-          <Icon id="heart" />
+          <InlineIconHeart />
         </Link>
         <Link href="/" className={styles.icon} aria-label="Shopping cart">
-          <Icon id="cart" />
+          <InlineIconCart />
         </Link>
       </div>
     </header>
