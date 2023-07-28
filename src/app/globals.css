@@ -1,5 +1,10 @@
 @import '../../node_modules/normalize.css/normalize.css';
 
+html,
+body {
+  scrollbar-gutter: stable;
+}
+
 :root {
   --font-main: 'Open Sans', sans-serif;
 

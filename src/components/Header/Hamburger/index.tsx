@@ -1,6 +1,8 @@
 import React, { ButtonHTMLAttributes } from 'react'
+import clsx from 'clsx'
 
-import { Icon } from '@/components/Icon'
+import { InlineIconMenuClose } from '@/components/InlineIcon/MenuClose'
+import { InlineIconMenuOpen } from '@/components/InlineIcon/MenuOpen'
 
 import styles from './styles.module.css'
 
@@ -10,8 +12,6 @@ type Props = {
 } & ButtonHTMLAttributes<HTMLButtonElement>
 
 export const Hamburger = ({ isMobileMenuOpened, onClick, ...props }: Props) => {
-  const iconId = isMobileMenuOpened ? 'menu-close' : 'menu-open'
-
   return (
     <button
       onClick={() => onClick(!isMobileMenuOpened)}
@@ -22,7 +22,8 @@ export const Hamburger = ({ isMobileMenuOpened, onClick, ...props }: Props) => {
       aria-expanded={isMobileMenuOpened}
       {...props}
     >
-      <Icon id={iconId} />
+      <InlineIconMenuOpen className={clsx(styles.icon, !isMobileMenuOpened && styles.visible)} />
+      <InlineIconMenuClose className={clsx(styles.icon, isMobileMenuOpened && styles.visible)} />
     </button>
   )
 }

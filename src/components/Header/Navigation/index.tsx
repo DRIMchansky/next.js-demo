@@ -35,23 +35,24 @@ export const Navigation = ({ data, isMobile, path, searchParams, className }: Pr
   }
 
   const handlePointerOver = (slug: string) => {
-    if (isMobile) return
-    toggleExpandingMenu(slug)
+    if (isDesktop) {
+      toggleExpandingMenu(slug)
+    }
   }
 
   const handlePointerOut = () => {
-    if (isMobile) return
-
-    hideTimeout.current = window.setTimeout(() => {
-      setExpandedLinkSlug(null)
-    }, SUBMENU_HIDE_DELAY)
+    if (isDesktop) {
+      hideTimeout.current = window.setTimeout(() => {
+        setExpandedLinkSlug(null)
+      }, SUBMENU_HIDE_DELAY)
+    }
   }
 
   const handleExpandPointerDown = (e: React.PointerEvent<HTMLAnchorElement>, slug: string) => {
-    if (isDesktop) return
-
-    e.preventDefault()
-    setExpandedLinkSlug(slugPrev => (slugPrev === slug ? null : slug))
+    if (isMobile) {
+      e.preventDefault()
+      setExpandedLinkSlug(slugPrev => (slugPrev === slug ? null : slug))
+    }
   }
 
   const handleExpandKeyDown = (e: React.KeyboardEvent<HTMLAnchorElement>, slug: string) => {

@@ -13,11 +13,16 @@
   color: var(--color-header-hamburger);
   cursor: pointer;
   justify-self: flex-start;
+}
 
-  & svg {
-    width: 100%;
-    height: 100%;
-  }
+.icon {
+  display: none;
+  width: 100%;
+  height: 100%;
+}
+
+.icon.visible {
+  display: block;
 }
 
 @media (--viewport-medium) {
