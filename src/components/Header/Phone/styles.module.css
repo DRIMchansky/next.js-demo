@@ -1,5 +1,5 @@
-@import '../../../app/mixins.css';
-@import '../../../app/media.css';
+@import '../../../app/styles/mixins.css';
+@import '../../../app/styles/media.css';
 
 .phone {
   display: grid;

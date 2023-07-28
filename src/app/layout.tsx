@@ -6,8 +6,8 @@ import { Header } from '@/components/Header'
 import { Footer } from '@/components/Footer'
 import { Layout } from '@/components/Layout'
 
-import styles from './global.module.css'
-import './globals.css'
+import styles from './styles/global.module.css'
+import './styles/globals.css'
 
 const openSans = localFont({ src: '../../public/assets/fonts/OpenSans-VariableFont.ttf' })
 
