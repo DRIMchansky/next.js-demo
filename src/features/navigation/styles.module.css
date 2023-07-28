@@ -1,5 +1,5 @@
-@import '../../../app/styles/media.css';
-@import '../../../app/styles/mixins.css';
+@import '../../shared/styles/media.css';
+@import '../../shared/styles/mixins.css';
 
 .list {
   display: flex;
