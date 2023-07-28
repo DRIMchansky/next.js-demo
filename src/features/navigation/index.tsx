@@ -62,6 +62,8 @@ export const Navigation = ({ data, isMobile, path, searchParams, className }: Pr
     setExpandedLinkSlug(slugPrev => (slugPrev === slug ? null : slug))
   }
 
+  const handleExpandClick = (e: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => isMobile && e.preventDefault()
+
   useEffect(toggleExpandingMenu, [path, searchParams])
 
   return (
@@ -83,6 +85,7 @@ export const Navigation = ({ data, isMobile, path, searchParams, className }: Pr
                 className={clsx(styles.link, hasSubitems && styles.linkExpandable)}
                 onPointerDown={e => hasSubitems && handleExpandPointerDown(e, item.slug)}
                 onKeyDown={e => hasSubitems && handleExpandKeyDown(e, item.slug)}
+                onClick={e => hasSubitems && handleExpandClick(e)}
               >
                 {item.label}
                 {hasSubitems && <InlineIconCollapse className={styles.collapseIcon} />}

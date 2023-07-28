@@ -117,6 +117,12 @@
 
     & .linkSpecial {
       padding: 7px 32px;
+
+      &:hover {
+        &:before {
+          opacity: 0;
+        }
+      }
     }
   }
 

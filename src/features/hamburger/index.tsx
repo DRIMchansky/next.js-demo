@@ -22,8 +22,11 @@ export const Hamburger = ({ isMobileMenuOpened, onClick, ...props }: Props) => {
       aria-expanded={isMobileMenuOpened}
       {...props}
     >
-      <InlineIconMenuOpen className={clsx(styles.icon, !isMobileMenuOpened && styles.visible)} />
-      <InlineIconMenuClose className={clsx(styles.icon, isMobileMenuOpened && styles.visible)} />
+      {isMobileMenuOpened ? (
+        <InlineIconMenuClose className={clsx(styles.icon, styles.visible)} />
+      ) : (
+        <InlineIconMenuOpen className={clsx(styles.icon, styles.visible)} />
+      )}
     </button>
   )
 }
