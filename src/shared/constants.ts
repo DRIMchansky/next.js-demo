@@ -1,0 +1,3 @@
+export const HEADER_CHANGE_WIDTH = 1024
+
+export const SUBMENU_HIDE_DELAY = 300

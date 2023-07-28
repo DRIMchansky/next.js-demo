@@ -1,0 +1,45 @@
+@import '../../../node_modules/normalize.css/normalize.css';
+
+html,
+body {
+  scrollbar-gutter: stable;
+}
+
+:root {
+  --font-main: 'Open Sans', sans-serif;
+
+  --opacity-link-hover: 0.8;
+  --transition-link-hover: 0.1s;
+
+  --page-padding-x: 16px;
+  --page-max-width: 1240px;
+
+  --outline-color: var(--color-blue-700);
+  --outline-radius: 5px;
+  --outline-thickness: 4px;
+
+  --color-black: oklch(22.41% 0.018 255.71);
+  --color-white: oklch(100% 0 0);
+  --color-grey-100: oklch(93.7% 0 0);
+  --color-grey-300: oklch(84.38% 0.015 244.75);
+  --color-grey-400: oklch(74.76% 0 0);
+  --color-grey-500: oklch(42.34% 0.024 253.08);
+  --color-blue-300: oklch(86.29% 0.071 247.4);
+  --color-blue-700: oklch(60.88% 0.192 247.4); /* p3  */
+  --color-red-400: oklch(63.16% 0.205 359.35);
+  --color-primary: oklch(62.02% 0.105 198.89);
+  --color-main: oklch(65.53% 0.143 250);
+  --color-light: oklch(74.76% 0 0);
+
+  --color-topline-bg: var(--color-grey-500);
+  --color-topline-text: var(--color-white);
+
+  --color-header-text: var(--color-grey-500);
+  --color-header-icon: var(--color-grey-500);
+  --color-header-hamburger: var(--color-black);
+  --color-header-bg: var(--color-white);
+  --color-header-accent: var(--color-main);
+
+  --color-menu-text: var(--color-grey-500);
+  --color-menu-decoration: var(--color-grey-500);
+}

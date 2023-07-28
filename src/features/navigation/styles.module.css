@@ -1,0 +1,141 @@
+@import '../../shared/styles/media.css';
+@import '../../shared/styles/mixins.css';
+
+.list {
+  display: flex;
+  flex-direction: column;
+  padding: 0;
+  margin: 0;
+  list-style-type: none;
+}
+
+.sublist {
+  display: none;
+  padding: 0;
+  margin: 0;
+  list-style-type: none;
+}
+
+.open .sublist {
+  display: block;
+}
+
+.subitem {
+  & .link {
+    padding: 8px 0 8px 16px;
+  }
+  & .linkSpecial {
+    padding: 7px 32px;
+  }
+}
+
+.link {
+  @mixin link;
+  @mixin link-focus;
+  position: relative;
+  display: block;
+  padding: 16px 0;
+  border-bottom: 1px solid var(--color-grey-100);
+  color: var(--color-menu-text);
+  font-size: 16px;
+  line-height: 26px;
+  text-decoration: none;
+}
+
+.linkSpecial {
+  display: inline-block;
+  border-bottom: none;
+  margin: 5px auto 0;
+  background: var(--color-main);
+  color: var(--color-white);
+}
+
+.collapseIcon {
+  position: absolute;
+  top: 0;
+  top: 50%;
+  right: 0;
+  width: 30px;
+  height: 30px;
+  color: var(--color-menu-text);
+  transform: translateY(-44%) rotate(270deg);
+  transform-origin: center;
+}
+
+.open {
+  & .collapseIcon {
+    transform: translateY(-44%) rotate(0);
+  }
+  & .linkExpandable {
+    color: var(--color-black);
+  }
+}
+
+.linkExpandable {
+  &:hover {
+    opacity: 1;
+  }
+}
+
+@media (--viewport-medium) {
+  .list {
+    flex-direction: row;
+    gap: 32px;
+  }
+
+  .sublist {
+    position: absolute;
+    padding: 32px 12px;
+    border-radius: 4px;
+    background: var(--color-white);
+    box-shadow: 0px 4px 18px -2px rgba(0, 0, 0, 0.1);
+
+    & .item:not(:first-child) {
+      margin-top: 16px;
+    }
+
+    & .link {
+      padding: 4px 2px;
+
+      &:before {
+        position: absolute;
+        bottom: -4px;
+        width: 100%;
+        height: 1px;
+        background: var(--color-main);
+        content: '';
+        opacity: 0;
+        transition: opacity var(--transition-link-hover);
+      }
+
+      &:hover {
+        &:before {
+          opacity: 1;
+        }
+      }
+    }
+
+    & .linkSpecial {
+      padding: 7px 32px;
+    }
+  }
+
+  .collapseIcon {
+    right: -25px;
+    color: var(--color-main);
+  }
+
+  .linkSpecial {
+    margin: 0;
+  }
+
+  .link {
+    border-bottom: none;
+    font-size: 20px;
+    line-height: auto;
+  }
+
+  .linkExpandable {
+    margin-right: 20px;
+  }
+}
