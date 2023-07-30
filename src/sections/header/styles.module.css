@@ -19,6 +19,7 @@
 
 .contentWrapper {
   position: fixed;
+  z-index: 10;
   display: grid;
   padding: 0 var(--page-padding-x);
   background: var(--color-header-bg);

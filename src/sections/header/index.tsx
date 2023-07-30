@@ -67,7 +67,7 @@ export const Header = () => {
 
     htmlElement.current = document.querySelector('html')
 
-    focusTrap.current = createFocusTrap(headerElement.current as HTMLElement)
+    focusTrap.current = createFocusTrap(headerElement.current as HTMLElement, { initialFocus: false })
   }, [])
 
   // close mobile menu if path or params changed
