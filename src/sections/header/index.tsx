@@ -13,8 +13,9 @@ import { useWindowSize } from '@/shared/hooks/use-window-size'
 import { Container } from '@/shared/components/container'
 import { HEADER_CHANGE_WIDTH } from '@/shared/constants'
 import { Navigation } from '../../features/navigation'
-import { mainNavData } from '@/app/data/main-nav'
+import { isTouch } from '@/shared/functions/is-touch'
 import { Hamburger } from '../../features/hamburger'
+import { mainNavData } from '@/app/data/main-nav'
 import { Topline } from './topline'
 import { Phone } from './phone'
 
@@ -98,7 +99,7 @@ export const Header = () => {
         >
           <Navigation
             data={mainNavData}
-            isMobile={isMobile}
+            isMobileBehaviour={isMobile || isTouch()}
             path={path}
             searchParams={searchParams}
             className={styles.navigation}

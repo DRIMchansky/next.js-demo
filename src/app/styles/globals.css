@@ -1,8 +1,11 @@
 @import '../../../node_modules/normalize.css/normalize.css';
+@import '../../shared/styles/media.css';
 
-html,
-body {
-  scrollbar-gutter: stable;
+@media (--viewport-medium-and-less) {
+  html,
+  body {
+    scrollbar-gutter: stable;
+  }
 }
 
 :root {
