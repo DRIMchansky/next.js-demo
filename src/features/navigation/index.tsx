@@ -4,17 +4,9 @@ import clsx from 'clsx'
 
 import { InlineIconCollapse } from '@/shared/components/inline-icon/collapse'
 import { SUBMENU_HIDE_DELAY } from '@/shared/constants'
+import { Item } from '@/shared/types'
 
 import styles from './styles.module.css'
-
-type Item = {
-  label: string
-  slug: string
-  special?: boolean
-  subitems?: Item[]
-}
-
-export type NavigationData = Item[]
 
 type Props = {
   data: Item[]

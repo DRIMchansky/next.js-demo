@@ -9,35 +9,16 @@ import clsx from 'clsx'
 
 import { InlineIconHeart } from '../../shared/components/inline-icon/heart'
 import { InlineIconCart } from '../../shared/components/inline-icon/cart'
-import { Navigation, NavigationData } from '../../features/navigation'
 import { useWindowSize } from '@/shared/hooks/use-window-size'
+import { Container } from '@/shared/components/container'
 import { HEADER_CHANGE_WIDTH } from '@/shared/constants'
+import { Navigation } from '../../features/navigation'
+import { mainNavData } from '@/app/data/main-nav'
 import { Hamburger } from '../../features/hamburger'
 import { Topline } from './topline'
 import { Phone } from './phone'
 
 import styles from './styles.module.css'
-
-const navigationData: NavigationData = [
-  { label: 'Главная', slug: '/' },
-  {
-    label: 'Каталог',
-    slug: '/catalog',
-    subitems: [
-      { label: 'Накладные электронные замки', slug: '/catalog?filter=filter-query1' },
-      { label: 'Врезные электронные замки', slug: '/catalog?filter=filter-query2' },
-      { label: 'Замки для квартиры', slug: '/catalog?filter=filter-query3' },
-      { label: 'Замки для дома', slug: '/catalog?filter=filter-query4' },
-      { label: 'Замки для отелей', slug: '/catalog?filter=filter-query5' },
-      { label: 'Замки для офиса', slug: '/catalog?filter=filter-query6' },
-      { label: 'Замки для шкафчиков', slug: '/catalog?filter=filter-query7' },
-      { label: 'Замки для раздевалок', slug: '/catalog?filter=filter-query8' },
-      { label: 'Смотреть все', slug: '/catalog', special: true }
-    ]
-  },
-  { label: 'Оптовая продажа', slug: '/wholesale' },
-  { label: 'О нас', slug: '/about' }
-]
 
 export const Header = () => {
   const [isMobileMenuOpened, setMobileMenuOpened] = useState(false)
@@ -104,7 +85,7 @@ export const Header = () => {
     <header className={styles.header} ref={headerElement}>
       <Topline />
 
-      <div className={styles.wrapper}>
+      <Container className={styles.container}>
         <Hamburger
           isMobileMenuOpened={isMobileMenuOpened}
           onClick={() => toggleMobileMenu()}
@@ -116,7 +97,7 @@ export const Header = () => {
           onTransitionEnd={handleTransitionEnd}
         >
           <Navigation
-            data={navigationData}
+            data={mainNavData}
             isMobile={isMobile}
             path={path}
             searchParams={searchParams}
@@ -131,7 +112,7 @@ export const Header = () => {
         <Link href="/" className={styles.icon} aria-label="Shopping cart">
           <InlineIconCart />
         </Link>
-      </div>
+      </Container>
     </header>
   )
 }

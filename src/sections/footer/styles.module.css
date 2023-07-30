@@ -1,2 +1,165 @@
+@import '../../shared/styles/media.css';
+@import '../../shared/styles/mixins.css';
+
 .footer {
+  background: var(--color-footer-bg);
+  color: var(--color-footer-text-primary);
+}
+
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin-top: 46px;
+}
+
+.icons {
+  --padding: 12px;
+  position: relative;
+  order: 1;
+  margin-top: 21px;
+
+  & .list {
+    display: flex;
+  }
+
+  & .link {
+    width: 24px;
+    height: 24px;
+    padding: var(--padding);
+  }
+}
+
+.icon {
+  width: 100%;
+  height: 100%;
+  color: var(--color-footer-text-primary);
+}
+
+.infoWrapper {
+  display: grid;
+  width: 100%;
+  align-items: flex-start;
+  column-gap: 34px;
+  grid-template-columns: repeat(2, minmax(auto, max-content));
+  row-gap: 24px;
+}
+
+.title {
+  margin: 0;
+  margin-bottom: 24px;
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 30px;
+}
+
+.subtitle {
+  color: var(--color-footer-text-secondary);
+  font-size: 12px;
+  font-weight: 300;
+  line-height: auto;
+}
+
+.text {
+  font-size: 14px;
+  font-weight: 300;
+  line-height: 24px;
+}
+
+.list {
+  padding: 0;
+  margin: 0;
+  list-style-type: none;
+}
+
+.link {
+  @mixin link;
+  @mixin link-focus;
+  display: block;
+  color: var(--color-footer-text-primary);
+  font-size: 14px;
+  font-weight: 300;
+  line-height: 24px;
+  text-decoration: none;
+}
+
+.navLink {
+  margin-top: 12px;
+}
+
+.contactLink {
+  margin-top: 12px;
+}
+
+.disclaimer {
+  position: relative;
+  width: 100%;
+  order: 10;
+  padding: 16px 0;
+  margin-top: 34px;
+  color: var(--color-footer-text-disclaimer);
+  text-align: center;
+
+  &:after {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    background: var(--color-footer-text-disclaimer);
+    content: '';
+  }
+}
+
+@media (--viewport-medium) {
+  .container {
+    margin-top: 55px;
+  }
+
+  .icons {
+    top: calc(var(--padding) * -1);
+    order: 0;
+    margin-top: 0;
+
+    & .link {
+      width: 26px;
+      height: 26px;
+    }
+  }
+
+  .infoWrapper {
+    width: auto;
+    grid-template-columns: repeat(4, minmax(140px, 200px));
+  }
+
+  .title {
+    margin-bottom: 24px;
+    font-size: 18px;
+    line-height: 28px;
+  }
+
+  .subtitle {
+    margin-bottom: 4px;
+    font-size: 14px;
+    line-height: 24px;
+  }
+
+  .text {
+    font-size: 16px;
+    line-height: 26px;
+  }
+
+  .link {
+    font-size: 16px;
+    line-height: 26px;
+  }
+
+  .navLink {
+    margin-top: 16px;
+  }
+
+  .disclaimer {
+    padding: 24px 0;
+    margin-top: 50px;
+  }
 }
