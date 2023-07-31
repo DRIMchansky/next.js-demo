@@ -4,30 +4,22 @@ import clsx from 'clsx'
 
 import { InlineIconCollapse } from '@/shared/components/inline-icon/collapse'
 import { SUBMENU_HIDE_DELAY } from '@/shared/constants'
+import { Item } from '@/shared/types'
 
 import styles from './styles.module.css'
 
-type Item = {
-  label: string
-  slug: string
-  special?: boolean
-  subitems?: Item[]
-}
-
-export type NavigationData = Item[]
-
 type Props = {
   data: Item[]
-  isMobile: boolean
+  isMobileBehaviour: boolean
   path: string
   searchParams: string
   className?: string
 }
 
-export const Navigation = ({ data, isMobile, path, searchParams, className }: Props) => {
+export const Navigation = ({ data, isMobileBehaviour, path, searchParams, className }: Props) => {
   const [expandedLinkSlug, setExpandedLinkSlug] = useState<string | null>(null)
   const hideTimeout = useRef<number>()
-  const isDesktop = !isMobile
+  const isDesktopBehaviour = !isMobileBehaviour
 
   const toggleExpandingMenu = (slug: string | null = null) => {
     window.clearTimeout(hideTimeout.current)
@@ -35,13 +27,13 @@ export const Navigation = ({ data, isMobile, path, searchParams, className }: Pr
   }
 
   const handlePointerOver = (slug: string) => {
-    if (isDesktop) {
+    if (isDesktopBehaviour) {
       toggleExpandingMenu(slug)
     }
   }
 
   const handlePointerOut = () => {
-    if (isDesktop) {
+    if (isDesktopBehaviour) {
       hideTimeout.current = window.setTimeout(() => {
         setExpandedLinkSlug(null)
       }, SUBMENU_HIDE_DELAY)
@@ -49,7 +41,7 @@ export const Navigation = ({ data, isMobile, path, searchParams, className }: Pr
   }
 
   const handleExpandPointerDown = (e: React.PointerEvent<HTMLAnchorElement>, slug: string) => {
-    if (isMobile) {
+    if (isMobileBehaviour) {
       e.preventDefault()
       setExpandedLinkSlug(slugPrev => (slugPrev === slug ? null : slug))
     }
@@ -62,7 +54,8 @@ export const Navigation = ({ data, isMobile, path, searchParams, className }: Pr
     setExpandedLinkSlug(slugPrev => (slugPrev === slug ? null : slug))
   }
 
-  const handleExpandClick = (e: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => isMobile && e.preventDefault()
+  const handleExpandClick = (e: React.MouseEvent<HTMLAnchorElement, MouseEvent>) =>
+    isMobileBehaviour && e.preventDefault()
 
   useEffect(toggleExpandingMenu, [path, searchParams])
 

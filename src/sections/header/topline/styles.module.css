@@ -14,14 +14,13 @@
   display: none;
 }
 
-.wrapper {
+.container {
   position: relative;
   display: flex;
-  max-width: var(--page-max-width);
   align-items: center;
   justify-content: center;
-  padding: var(--padding-y) var(--page-padding-x);
-  margin: 0 auto;
+  padding-top: var(--padding-y);
+  padding-bottom: var(--padding-y);
 }
 
 @media (--viewport-medium) {
