@@ -3,13 +3,13 @@ import clsx from 'clsx'
 
 import { InlineIconPhone } from '@/shared/components/inline-icon/phone'
 
-import styles from './styles.module.css'
+import styles from './header-phone.module.css'
 
 type Props = {
   className?: string
 }
 
-export const Phone = ({ className }: Props) => {
+export const HeaderPhone = ({ className }: Props) => {
   return (
     <div className={clsx(styles.phone, className)}>
       <InlineIconPhone className={styles.icon} />

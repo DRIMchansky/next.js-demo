@@ -6,7 +6,7 @@ import { InlineIconCollapse } from '@/shared/components/inline-icon/collapse'
 import { SUBMENU_HIDE_DELAY } from '@/shared/constants'
 import { Item } from '@/shared/types'
 
-import styles from './styles.module.css'
+import styles from './navigation.module.css'
 
 type Props = {
   data: Item[]

@@ -16,10 +16,10 @@ import { Navigation } from '../../features/navigation'
 import { isTouch } from '@/shared/functions/is-touch'
 import { Hamburger } from '../../features/hamburger'
 import { mainNavData } from '@/app/data/main-nav'
-import { Topline } from './topline'
-import { Phone } from './phone'
+import { HeaderTopline } from './topline'
+import { HeaderPhone } from './phone'
 
-import styles from './styles.module.css'
+import styles from './header.module.css'
 
 export const Header = () => {
   const [isMobileMenuOpened, setMobileMenuOpened] = useState(false)
@@ -84,7 +84,7 @@ export const Header = () => {
 
   return (
     <header className={styles.header} ref={headerElement}>
-      <Topline />
+      <HeaderTopline />
 
       <Container className={styles.container}>
         <Hamburger
@@ -104,7 +104,7 @@ export const Header = () => {
             searchParams={searchParams}
             className={styles.navigation}
           />
-          <Phone className={styles.phone} />
+          <HeaderPhone className={styles.phone} />
         </div>
 
         <Link href="/" className={styles.icon} aria-label="Favorite goods">

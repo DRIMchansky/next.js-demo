@@ -1,6 +1,6 @@
 import React, { forwardRef } from 'react'
 
-import { InlineIcon, IconProps } from '..'
+import { InlineIcon, IconProps } from '../inline-icon'
 
 export const InlineIconPhone = forwardRef<SVGSVGElement, IconProps>((props, ref) => {
   return (

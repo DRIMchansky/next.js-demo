@@ -7,7 +7,7 @@ import { Container } from '@/shared/components/container'
 import { mainNavData } from '@/app/data/main-nav'
 import { infoNavData } from '@/app/data/info-nav'
 
-import styles from './styles.module.css'
+import styles from './footer.module.css'
 
 export const Footer = () => {
   return (

@@ -2,9 +2,9 @@ import React from 'react'
 
 import { Container } from '@/shared/components/container'
 
-import styles from './styles.module.css'
+import styles from './header-topline.module.css'
 
-export const Topline = () => {
+export const HeaderTopline = () => {
   return (
     <div className={styles.topline}>
       <Container className={styles.container}>

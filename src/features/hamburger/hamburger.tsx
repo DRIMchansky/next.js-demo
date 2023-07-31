@@ -4,7 +4,7 @@ import clsx from 'clsx'
 import { InlineIconMenuClose } from '@/shared/components/inline-icon/menu-close'
 import { InlineIconMenuOpen } from '@/shared/components/inline-icon/menu-open'
 
-import styles from './styles.module.css'
+import styles from './hamburger.module.css'
 
 type Props = {
   isMobileMenuOpened: boolean
