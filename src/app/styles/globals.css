@@ -4,13 +4,11 @@
 @media (--viewport-medium-and-less) {
   html,
   body {
-    scrollbar-gutter: stable;
+    scrollbar-gutter: auto;
   }
 }
 
 :root {
-  --font-main: 'Open Sans', sans-serif;
-
   --opacity-link-hover: 0.8;
   --transition-link-hover: 0.1s;
 
