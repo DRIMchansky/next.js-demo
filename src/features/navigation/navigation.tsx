@@ -1,4 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react'
+import { ReadonlyURLSearchParams } from 'next/navigation'
 import Link from 'next/link'
 import clsx from 'clsx'
 
@@ -12,7 +13,7 @@ type Props = {
   data: Item[]
   isMobileBehaviour: boolean
   path: string
-  searchParams: string
+  searchParams: ReadonlyURLSearchParams
   className?: string
 }
 
