@@ -28,7 +28,7 @@ export const Header = () => {
 
   const isMobile = useWindowSize().width < HEADER_CHANGE_WIDTH
   const path = usePathname()
-  const searchParams = useSearchParams().toString()
+  const searchParams = useSearchParams()
   const headerElement = useRef<HTMLElement | null>(null)
   const htmlElement = useRef<HTMLElement | null>(null)
   const focusTrap = useRef<FocusTrap | null>(null)

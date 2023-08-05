@@ -9,7 +9,10 @@ import { Footer } from '@/sections/footer'
 import styles from './styles/global.module.css'
 import './styles/globals.css'
 
-const openSans = localFont({ src: '../../public/assets/fonts/OpenSans-VariableFont.ttf' })
+export const openSans = localFont({
+  src: '../../public/assets/fonts/OpenSans-VariableFont.ttf',
+  fallback: ['sans-serif']
+})
 
 export const metadata: Metadata = {
   title: 'Lock Shop',
