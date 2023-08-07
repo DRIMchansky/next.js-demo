@@ -12,8 +12,8 @@ import styles from './navigation.module.css'
 type Props = {
   data: Item[]
   isMobileBehaviour: boolean
-  path: string
-  searchParams: ReadonlyURLSearchParams
+  path: string | null
+  searchParams: ReadonlyURLSearchParams | null
   className?: string
 }
 
