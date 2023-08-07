@@ -9,6 +9,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
+    "lint:css": "npx stylelint src/**/*.css",
     "storybook": "storybook dev -p 3334",
     "build-storybook": "storybook build"
   },

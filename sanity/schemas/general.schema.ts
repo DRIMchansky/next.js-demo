@@ -5,9 +5,9 @@ export const general = defineType({
   type: 'document',
   fields: [
     {
-      name: 'name',
+      name: 'title',
       type: 'string',
-      title: 'Название'
+      title: 'Заголовок'
     },
     {
       name: 'description',

@@ -3,6 +3,7 @@ import type { Metadata } from 'next'
 import clsx from 'clsx'
 
 import { Layout } from '@/shared/components/layout'
+import { client } from '../../sanity/lib/client'
 import { Header } from '@/sections/header'
 import { Footer } from '@/sections/footer'
 
@@ -14,9 +15,14 @@ export const openSans = localFont({
   fallback: ['sans-serif']
 })
 
-export const metadata: Metadata = {
-  title: 'Lock Shop',
-  description: 'Магазин замков, доступных каждому'
+export async function generateMetadata(): Promise<Metadata> {
+  const generalData = await client.fetch(`*[_type == "general"]`)
+  const { title, description } = generalData[0]
+
+  return {
+    title,
+    description
+  }
 }
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
