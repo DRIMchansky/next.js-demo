@@ -13,6 +13,11 @@ export const general = defineType({
       name: 'description',
       type: 'string',
       title: 'Описание'
+    },
+    {
+      name: 'address',
+      type: 'string',
+      title: 'Адрес'
     }
   ]
 })

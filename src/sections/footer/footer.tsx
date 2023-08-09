@@ -4,12 +4,15 @@ import clsx from 'clsx'
 
 import { ExternalIcon } from '@/shared/components/external-icon'
 import { Container } from '@/shared/components/container'
+import { getGeneralData } from '@/app/sanity/lib/client'
 import { mainNavData } from '@/app/data/main-nav'
 import { infoNavData } from '@/app/data/info-nav'
 
 import styles from './footer.module.css'
 
-export const Footer = () => {
+export const Footer = async () => {
+  const { address } = await getGeneralData()
+
   return (
     <footer className={styles.footer}>
       <Container className={styles.container}>
@@ -81,7 +84,7 @@ export const Footer = () => {
 
           <div>
             <p className={styles.title}>Наш адрес</p>
-            <p className={styles.text}>Россия, Ростов-на-Дону ул. Богачева, 16</p>
+            <p className={styles.text}>{address}</p>
           </div>
 
           <div>
@@ -100,7 +103,7 @@ export const Footer = () => {
           </div>
         </div>
 
-        <div className={styles.disclaimer}>© 2021 All rights reserved.</div>
+        <div className={styles.disclaimer}>© {new Date().getFullYear()} All rights reserved.</div>
       </Container>
     </footer>
   )

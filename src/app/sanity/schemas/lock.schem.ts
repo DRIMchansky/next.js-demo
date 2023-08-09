@@ -3,7 +3,7 @@ import { defineType } from 'sanity'
 export const lock = defineType({
   name: 'lock',
   type: 'document',
-  title: 'Замок',
+  title: 'Замки',
   fields: [
     {
       name: 'name',

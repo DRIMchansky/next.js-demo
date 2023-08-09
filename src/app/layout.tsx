@@ -3,7 +3,7 @@ import type { Metadata } from 'next'
 import clsx from 'clsx'
 
 import { Layout } from '@/shared/components/layout'
-import { client } from '../../sanity/lib/client'
+import { getGeneralData } from './sanity/lib/client'
 import { Header } from '@/sections/header'
 import { Footer } from '@/sections/footer'
 
@@ -16,8 +16,7 @@ export const openSans = localFont({
 })
 
 export async function generateMetadata(): Promise<Metadata> {
-  const generalData = await client.fetch(`*[_type == "general"]`)
-  const { title, description } = generalData[0]
+  const { title, description } = await getGeneralData()
 
   return {
     title,
