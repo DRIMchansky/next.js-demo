@@ -1,3 +1,4 @@
+import { vercelDeployTool } from 'sanity-plugin-vercel-deploy'
 import { visionTool } from '@sanity/vision'
 import { deskTool } from 'sanity/desk'
 import { defineConfig } from 'sanity'
@@ -30,7 +31,8 @@ export default defineConfig({
             S.documentTypeListItem('lock').title('Замок')
           ])
     }),
-    visionTool({ defaultApiVersion: apiVersion })
+    visionTool({ defaultApiVersion: apiVersion }),
+    vercelDeployTool()
   ],
 
   schema: {
