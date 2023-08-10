@@ -1,10 +1,12 @@
 import { vercelDeployTool } from 'sanity-plugin-vercel-deploy'
 import { visionTool } from '@sanity/vision'
+import { internationalizedArray } from 'sanity-plugin-internationalized-array'
 import { deskTool } from 'sanity/desk'
 import { defineConfig } from 'sanity'
 
 import { apiVersion, dataset, projectId } from './src/app/sanity/env'
 import { schemaTypes } from './src/app/sanity/schemas'
+import { i18n } from '@/app/languages'
 
 const singletonActions = new Set(['publish', 'discardChanges', 'restore'])
 const singletonTypes = new Set(['general'])
@@ -15,6 +17,11 @@ export default defineConfig({
   projectId,
   dataset,
   plugins: [
+    internationalizedArray({
+      languages: i18n.languages,
+      defaultLanguages: [i18n.base],
+      fieldTypes: ['string', 'text']
+    }),
     deskTool({
       structure: S =>
         S.list()

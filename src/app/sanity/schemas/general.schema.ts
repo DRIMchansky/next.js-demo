@@ -11,7 +11,7 @@ export const general = defineType({
     },
     {
       name: 'description',
-      type: 'string',
+      type: 'internationalizedArrayString',
       title: 'Описание'
     },
     {
