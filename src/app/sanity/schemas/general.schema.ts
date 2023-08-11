@@ -16,7 +16,7 @@ export const general = defineType({
     },
     {
       name: 'address',
-      type: 'string',
+      type: 'internationalizedArrayString',
       title: 'Адрес'
     }
   ]

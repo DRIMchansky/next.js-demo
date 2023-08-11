@@ -4,14 +4,19 @@ import clsx from 'clsx'
 
 import { ExternalIcon } from '@/shared/components/external-icon'
 import { Container } from '@/shared/components/container'
-import { getGeneralData } from '@/app/sanity/lib/client'
+import { fetchGeneralData } from '@/app/sanity/lib/api'
 import { mainNavData } from '@/app/data/main-nav'
 import { infoNavData } from '@/app/data/info-nav'
+import { Language } from '@/app/languages'
 
 import styles from './footer.module.css'
 
-export const Footer = async () => {
-  const { address } = await getGeneralData()
+type Props = {
+  language: Language
+}
+
+export const Footer = async (props: Props) => {
+  const { address } = await fetchGeneralData(props.language)
 
   return (
     <footer className={styles.footer}>
@@ -53,7 +58,7 @@ export const Footer = async () => {
               {mainNavData.map(({ label, slug }) => {
                 return (
                   <li className={styles.item} key={label}>
-                    <Link href={slug} className={clsx(styles.link, styles.navLink)}>
+                    <Link href={`/${props.language}${slug}`} className={clsx(styles.link, styles.navLink)}>
                       {label}
                     </Link>
                   </li>
@@ -93,7 +98,7 @@ export const Footer = async () => {
               {infoNavData.map(({ label, slug }) => {
                 return (
                   <li className={styles.item} key={label}>
-                    <Link href={slug} className={clsx(styles.link, styles.navLink)}>
+                    <Link href={`/${props.language}${slug}`} className={clsx(styles.link, styles.navLink)}>
                       {label}
                     </Link>
                   </li>

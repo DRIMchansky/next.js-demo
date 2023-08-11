@@ -1,4 +1,12 @@
-const languages = [
+export type Language = 'ru' | 'en'
+
+type LanguageData = {
+  id: Language
+  title: string
+  isDefault?: boolean
+}
+
+const languages: LanguageData[] = [
   { id: 'ru', title: 'Russian', isDefault: true },
   { id: 'en', title: 'English' }
 ]

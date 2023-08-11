@@ -16,12 +16,17 @@ import { Navigation } from '../../features/navigation'
 import { isTouch } from '@/shared/functions/is-touch'
 import { Hamburger } from '../../features/hamburger'
 import { mainNavData } from '@/app/data/main-nav'
+import { Language } from '@/app/languages'
 import { HeaderTopline } from './topline'
 import { HeaderPhone } from './phone'
 
 import styles from './header.module.css'
 
-export const Header = () => {
+type Props = {
+  language: Language
+}
+
+export const Header = ({ language }: Props) => {
   const [isMobileMenuOpened, setMobileMenuOpened] = useState(false)
   const [addClosedClass, setClosedClass] = useState(true)
   const [isAnimationInProgress, setAnimationInProgress] = useState(false)
@@ -102,6 +107,7 @@ export const Header = () => {
             isMobileBehaviour={isMobile || isTouch()}
             path={path}
             searchParams={searchParams}
+            language={language}
             className={styles.navigation}
           />
           <HeaderPhone className={styles.phone} />
