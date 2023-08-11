@@ -23,7 +23,8 @@ export function middleware(request: NextRequest) {
   const pathname = request.nextUrl.pathname
 
   // locale ignore paths
-  if (['/studio/desk'].includes(pathname)) return
+  const ignorePaths = ['/studio/desk']
+  if (ignorePaths.some(path => pathname.includes(path))) return
 
   const isPathnameWithoutLocale = supportedLanguages.every(
     locale => !pathname.startsWith(`/${locale}/`) && pathname !== `/${locale}`
