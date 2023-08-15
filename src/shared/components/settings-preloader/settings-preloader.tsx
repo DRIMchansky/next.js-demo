@@ -2,10 +2,11 @@
 
 import { useRef } from 'react'
 
-import { $settings, Settings } from '@/app/store/settings'
+import { $settings } from '@/app/store/settings'
+import { AppSettings } from '@/shared/types'
 
 type Props = {
-  settings: Settings
+  settings: AppSettings
 }
 
 /**

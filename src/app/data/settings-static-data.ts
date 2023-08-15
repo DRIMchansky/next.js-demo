@@ -1,9 +1,9 @@
+import { AppSettings } from '@/shared/types'
 import { infoNavData } from './info-nav'
 import { mainNavData } from './main-nav'
 import { i18n } from '../languages'
-import { Settings } from '../store/settings'
 
-export const settingsStaticData: Settings = {
+export const settingsStaticData: AppSettings = {
   language: i18n.base,
   generalData: {
     address: 'Россия, Ростов-на-Дону ул. Богачева, 16',
