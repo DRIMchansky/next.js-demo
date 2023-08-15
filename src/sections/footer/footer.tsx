@@ -2,21 +2,19 @@ import Link from 'next/link'
 import React from 'react'
 import clsx from 'clsx'
 
+import { settingsStaticData } from '@/app/data/settings-static-data'
 import { ExternalIcon } from '@/shared/components/external-icon'
 import { Container } from '@/shared/components/container'
-import { fetchGeneralData } from '@/app/sanity/lib/api'
-import { mainNavData } from '@/app/data/main-nav'
-import { infoNavData } from '@/app/data/info-nav'
-import { Language } from '@/app/languages'
+import { $settings } from '@/app/store/settings'
 
 import styles from './footer.module.css'
 
-type Props = {
-  language: Language
-}
-
-export const Footer = async (props: Props) => {
-  const { address } = await fetchGeneralData(props.language)
+export const Footer = () => {
+  const settings = $settings.get()
+  const generalData = settings.generalData || settingsStaticData.generalData!
+  const headersData = settings.headersData || settingsStaticData.headersData!
+  const mainNavData = settings.mainNavData || settingsStaticData.mainNavData!
+  const infoNavData = settings.infoNavData || settingsStaticData.infoNavData!
 
   return (
     <footer className={styles.footer}>
@@ -53,12 +51,12 @@ export const Footer = async (props: Props) => {
 
         <div className={styles.infoWrapper}>
           <div>
-            <p className={styles.title}>Навигация</p>
+            <p className={styles.title}>{headersData.navigation}</p>
             <ul className={styles.list}>
               {mainNavData.map(({ label, slug }) => {
                 return (
                   <li className={styles.item} key={label}>
-                    <Link href={`/${props.language}${slug}`} className={clsx(styles.link, styles.navLink)}>
+                    <Link href={`/${settings.language}${slug}`} className={clsx(styles.link, styles.navLink)}>
                       {label}
                     </Link>
                   </li>
@@ -68,9 +66,9 @@ export const Footer = async (props: Props) => {
           </div>
 
           <div>
-            <p className={styles.title}>Наши контакты</p>
+            <p className={styles.title}>{headersData.contacts}</p>
 
-            <p className={styles.subtitle}>Телефоны</p>
+            <p className={styles.subtitle}>{headersData.phones}</p>
             <a href="tel:89665588499" className={clsx(styles.link, styles.contactLink)}>
               +7 (966) 55 88 499
             </a>
@@ -88,17 +86,17 @@ export const Footer = async (props: Props) => {
           </div>
 
           <div>
-            <p className={styles.title}>Наш адрес</p>
-            <p className={styles.text}>{address}</p>
+            <p className={styles.title}>{headersData.address}</p>
+            <p className={styles.text}>{generalData.address}</p>
           </div>
 
           <div>
-            <p className={styles.title}>Информация</p>
+            <p className={styles.title}>{headersData.info}</p>
             <ul className={styles.list}>
               {infoNavData.map(({ label, slug }) => {
                 return (
                   <li className={styles.item} key={label}>
-                    <Link href={`/${props.language}${slug}`} className={clsx(styles.link, styles.navLink)}>
+                    <Link href={`/${settings.language}${slug}`} className={clsx(styles.link, styles.navLink)}>
                       {label}
                     </Link>
                   </li>

@@ -11,6 +11,9 @@ devDependencies:
   '@formatjs/intl-localematcher':
     specifier: ^0.4.0
     version: 0.4.0
+  '@nanostores/react':
+    specifier: ^0.7.1
+    version: 0.7.1(nanostores@0.9.3)(react@18.2.0)
   '@sanity/image-url':
     specifier: ^1.0.2
     version: 1.0.2
@@ -80,6 +83,9 @@ devDependencies:
   focus-trap:
     specifier: ^7.5.2
     version: 7.5.2
+  nanostores:
+    specifier: ^0.9.3
+    version: 0.9.3
   negotiator:
     specifier: ^0.6.3
     version: 0.6.3
@@ -2643,6 +2649,17 @@ packages:
     dependencies:
       '@types/mdx': 2.0.5
       '@types/react': 18.2.18
+      react: 18.2.0
+    dev: true
+
+  /@nanostores/react@0.7.1(nanostores@0.9.3)(react@18.2.0):
+    resolution: {integrity: sha512-EXQg9N4MdI4eJQz/AZLIx3hxQ6BuBmV4Q55bCd5YCSgEOAW7tGTsIZxpRXxvxLXzflNvHTBvfrDNY38TlSVBkQ==}
+    engines: {node: ^16.0.0 || ^18.0.0 || >=20.0.0}
+    peerDependencies:
+      nanostores: ^0.9.0
+      react: '>=18.0.0'
+    dependencies:
+      nanostores: 0.9.3
       react: 18.2.0
     dev: true
 
@@ -10666,6 +10683,11 @@ packages:
     resolution: {integrity: sha512-BGcqMMJuToF7i1rt+2PWSNVnWIkGCU78jBG3RxO/bZlnZPK2Cmi2QaffxGO/2RvWi9sL+FAiRiXMgsyxQ1DIDA==}
     engines: {node: ^10 || ^12 || ^13.7 || ^14 || >=15.0.1}
     hasBin: true
+    dev: true
+
+  /nanostores@0.9.3:
+    resolution: {integrity: sha512-KobZjcVyNndNrb5DAjfs0WG0lRcZu5Q1BOrfTOxokFLi25zFrWPjg+joXC6kuDqNfSt9fQwppyjUBkRPtsL+8w==}
+    engines: {node: ^16.0.0 || ^18.0.0 || >=20.0.0}
     dev: true
 
   /natural-compare-lite@1.4.0:

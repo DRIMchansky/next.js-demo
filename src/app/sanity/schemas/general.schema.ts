@@ -18,6 +18,21 @@ export const general = defineType({
       name: 'address',
       type: 'internationalizedArrayString',
       title: 'Адрес'
+    },
+    {
+      name: 'seeAll',
+      type: 'internationalizedArrayString',
+      title: 'Смотреть все'
+    },
+    {
+      name: 'promotionText',
+      type: 'internationalizedArrayString',
+      title: 'Текст промо'
+    },
+    {
+      name: 'promotionButtonText',
+      type: 'internationalizedArrayString',
+      title: 'Текст кнопки промо'
     }
   ]
 })

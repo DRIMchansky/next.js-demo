@@ -16,6 +16,7 @@
   "devDependencies": {
     "@csstools/postcss-oklab-function": "^3.0.1",
     "@formatjs/intl-localematcher": "^0.4.0",
+    "@nanostores/react": "^0.7.1",
     "@sanity/image-url": "^1.0.2",
     "@sanity/vision": "^3.14.5",
     "@storybook/addon-a11y": "^7.2.1",
@@ -39,6 +40,7 @@
     "eslint-config-prettier": "^9.0.0",
     "eslint-plugin-storybook": "^0.6.13",
     "focus-trap": "^7.5.2",
+    "nanostores": "^0.9.3",
     "negotiator": "^0.6.3",
     "next": "13.4.12",
     "next-sanity": "^5.2.0",

@@ -9,7 +9,7 @@ import { schemaTypes } from './src/app/sanity/schemas'
 import { i18n } from '@/app/languages'
 
 const singletonActions = new Set(['publish', 'discardChanges', 'restore'])
-const singletonTypes = new Set(['general'])
+const singletonTypes = new Set(['general', 'headers'])
 
 export default defineConfig({
   title: 'CMS',
@@ -33,9 +33,13 @@ export default defineConfig({
               // that we're editing the single instance of the document
               S.document().schemaType('general').documentId('general')
             ),
+            S.listItem()
+              .title('Заголовки')
+              .id('headers')
+              .child(S.document().schemaType('headers').documentId('headers')),
 
             // Regular document types
-            S.documentTypeListItem('lock').title('Замок')
+            S.documentTypeListItem('lock').title('Замки')
           ])
     }),
     visionTool({ defaultApiVersion: apiVersion }),
