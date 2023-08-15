@@ -6,15 +6,14 @@ import { $settings } from '@/app/store/settings'
 import styles from './header-topline.module.css'
 
 export const HeaderTopline = () => {
-  const text = $settings.get().generalData?.promotionText
-  const buttonText = $settings.get().generalData?.promotionButtonText
+  const { content } = $settings.get()
 
-  return text && buttonText ? (
+  return content.promotionText && content.promotionButtonText ? (
     <div className={styles.topline}>
       <Container className={styles.container}>
-        <span className={styles.text}>{text}</span>{' '}
+        <span className={styles.text}>{content.promotionText}</span>{' '}
         <a href="#" className={styles.callBack}>
-          {buttonText}
+          {content.promotionButtonText}
         </a>
       </Container>
     </div>

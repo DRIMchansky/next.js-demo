@@ -5,7 +5,6 @@ import Link from 'next/link'
 import clsx from 'clsx'
 
 import { InlineIconCollapse } from '@/shared/components/inline-icon/collapse'
-import { settingsStaticData } from '@/app/data/settings-static-data'
 import { SUBMENU_HIDE_DELAY } from '@/shared/constants'
 import { $settings } from '@/app/store/settings'
 
@@ -23,8 +22,7 @@ export const Navigation = ({ isMobileBehaviour, path, searchParams, className }:
   const hideTimeout = useRef<number>()
   const isDesktopBehaviour = !isMobileBehaviour
 
-  const settings = useStore($settings)
-  const mainNavData = settings.mainNavData || settingsStaticData.mainNavData!
+  const { mainNavData, language } = useStore($settings)
 
   const toggleExpandingMenu = (slug: string | null = null) => {
     window.clearTimeout(hideTimeout.current)
@@ -78,7 +76,7 @@ export const Navigation = ({ isMobileBehaviour, path, searchParams, className }:
               onPointerOut={() => hasSubitems && handlePointerOut()}
             >
               <Link
-                href={`/${settings.language}${item.slug}`}
+                href={`/${language}${item.slug}`}
                 {...(hasSubitems && { 'aria-expanded': expandedLinkSlug === item.slug })}
                 className={clsx(styles.link, hasSubitems && styles.linkExpandable)}
                 onPointerDown={e => hasSubitems && handleExpandPointerDown(e, item.slug)}
@@ -94,7 +92,7 @@ export const Navigation = ({ isMobileBehaviour, path, searchParams, className }:
                   {item.subitems?.map(item => (
                     <li key={item.slug} className={clsx(styles.item, styles.subitem)}>
                       <Link
-                        href={`/${settings.language}${item.slug}`}
+                        href={`/${language}${item.slug}`}
                         className={clsx(styles.link, item.special && styles.linkSpecial)}
                         onClick={() => toggleExpandingMenu()}
                       >

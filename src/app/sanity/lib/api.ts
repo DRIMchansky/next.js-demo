@@ -1,7 +1,6 @@
 import { createClient } from 'next-sanity'
 
 import { apiVersion, dataset, projectId, useCdn } from '../env'
-import { GeneralData, HeadersData } from '@/shared/types'
 import { generalQuery, headersQuery } from '../queries'
 import { Language, i18n } from '@/app/languages'
 
@@ -16,16 +15,16 @@ const client = createClient({
   useCdn
 })
 
-export const fetchGeneralData = async (language: Language): Promise<GeneralData> => {
+export const fetchContent = async (language: Language): Promise<Record<string, string>> => {
   const queryParams = { ...baseParams, language }
-  const data = await client.fetch<GeneralData>(generalQuery, queryParams)
 
-  return data
-}
+  const [generalData, headersData] = await Promise.all([
+    client.fetch<Record<string, string>>(generalQuery, queryParams),
+    client.fetch<Record<string, string>>(headersQuery, queryParams)
+  ])
 
-export const fetchHeadersData = async (language: Language): Promise<HeadersData> => {
-  const queryParams = { ...baseParams, language }
-  const data = await client.fetch<HeadersData>(headersQuery, queryParams)
-
-  return data
+  return {
+    ...generalData,
+    ...headersData
+  }
 }

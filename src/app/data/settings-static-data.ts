@@ -3,19 +3,19 @@ import { infoNavData } from './info-nav'
 import { mainNavData } from './main-nav'
 import { i18n } from '../languages'
 
-export const settingsStaticData: AppSettings = {
+export const settingsStatic: AppSettings = {
   language: i18n.base,
-  generalData: {
+  content: {
+    // general
     address: 'Россия, Ростов-на-Дону ул. Богачева, 16',
     description: 'Магазин замков, доступных каждому',
     promotionButtonText: 'Обратный звонок',
     promotionText: 'Скидка 10% по промокоду “ЗАМОК” на все заказы до 10.09',
     seeAll: 'Смотреть все',
-    title: 'Lock Shop'
-  },
-  headersData: {
+    title: 'Lock Shop',
+    // headers
     aboutUs: 'О нас',
-    address: 'Адрес',
+    addressHeader: 'Адрес',
     apartmentLocks: 'Замки для квартиры',
     catalog: 'Каталог',
     contacts: 'Наши контакты',

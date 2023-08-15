@@ -25,7 +25,7 @@ export const headersQuery = groq`*[_type == "headers"][0]{
     'wholesale',
     'navigation',
     'contacts',
-    'address',
+    'addressHeader',
     'info',
     'phones',
     'devivery',

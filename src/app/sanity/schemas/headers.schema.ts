@@ -50,7 +50,7 @@ export const headers = defineType({
       title: 'Наши контакты'
     },
     {
-      name: 'address',
+      name: 'addressHeader',
       type: 'internationalizedArrayString',
       title: 'Наш адрес'
     },
