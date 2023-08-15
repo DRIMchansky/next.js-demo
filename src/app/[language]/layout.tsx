@@ -3,7 +3,7 @@ import type { Metadata } from 'next'
 import clsx from 'clsx'
 
 import { SettingsPreloader } from '@/shared/components/settings-preloader'
-import { localizeNavData } from '@/shared/functions/localization'
+import { updateNavLabels } from '@/shared/functions/localization'
 import { HeaderTopline } from '@/sections/header/topline'
 import { Layout } from '@/shared/components/layout'
 import { fetchContent } from '../sanity/lib/api'
@@ -40,8 +40,8 @@ export default async function RootLayout(props: PageProps) {
     ...$settings.get(),
     language: params.language,
     content,
-    mainNavData: localizeNavData(mainNavData, content),
-    infoNavData: localizeNavData(infoNavData, content)
+    mainNavData: updateNavLabels(mainNavData, content),
+    infoNavData: updateNavLabels(infoNavData, content)
   })
 
   return (

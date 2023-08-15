@@ -1,6 +1,6 @@
+import { internationalizedArray } from 'sanity-plugin-internationalized-array'
 import { vercelDeployTool } from 'sanity-plugin-vercel-deploy'
 import { visionTool } from '@sanity/vision'
-import { internationalizedArray } from 'sanity-plugin-internationalized-array'
 import { deskTool } from 'sanity/desk'
 import { defineConfig } from 'sanity'
 

@@ -1,12 +1,5 @@
 import { Language } from '@/app/languages'
 
-export type AppSettings = {
-  language: Language
-  content: Record<string, string>
-  mainNavData: NavData
-  infoNavData: NavData
-}
-
 type NavItem = {
   label: string
   slug: string

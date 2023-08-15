@@ -1,4 +1,4 @@
-import { AppSettings } from '@/shared/types'
+import { AppSettings } from '../store/settings'
 import { infoNavData } from './info-nav'
 import { mainNavData } from './main-nav'
 import { i18n } from '../languages'
