@@ -1,13 +1,11 @@
 import type { Meta, StoryObj } from '@storybook/react'
 
 import { Navigation } from '.'
-import { mainNavData } from '@/app/data/main-nav'
 
 const meta: Meta<typeof Navigation> = {
   title: 'Features/Navigation',
   component: Navigation,
   args: {
-    data: mainNavData,
     path: '/'
   }
 }

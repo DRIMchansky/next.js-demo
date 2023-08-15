@@ -1,18 +1,21 @@
 import React from 'react'
 
 import { Container } from '@/shared/components/container'
+import { $settings } from '@/app/store/settings'
 
 import styles from './header-topline.module.css'
 
 export const HeaderTopline = () => {
-  return (
+  const { content } = $settings.get()
+
+  return content.promotionText && content.promotionButtonText ? (
     <div className={styles.topline}>
       <Container className={styles.container}>
-        <span className={styles.text}>Скидка 10% по промокоду “ЗАМОК” на все заказы до 10.09</span>{' '}
+        <span className={styles.text}>{content.promotionText}</span>{' '}
         <a href="#" className={styles.callBack}>
-          Обратный звонок
+          {content.promotionButtonText}
         </a>
       </Container>
     </div>
-  )
+  ) : null
 }

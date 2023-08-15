@@ -4,7 +4,7 @@ import localFont from 'next/font/local'
 import '../src/app/styles/globals.css'
 import React from 'react'
 
-import { openSans } from '../src/app/layout'
+import { openSans } from '../src/app/[language]/layout'
 
 const customViewports = {
   mobilePortrait: {

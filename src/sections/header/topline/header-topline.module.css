@@ -23,6 +23,10 @@
   padding-bottom: var(--padding-y);
 }
 
+.text {
+  text-align: center;
+}
+
 @media (--viewport-medium) {
   .topline {
     --padding-y: 13px;

@@ -4,12 +4,13 @@ import clsx from 'clsx'
 
 import { ExternalIcon } from '@/shared/components/external-icon'
 import { Container } from '@/shared/components/container'
-import { mainNavData } from '@/app/data/main-nav'
-import { infoNavData } from '@/app/data/info-nav'
+import { $settings } from '@/app/store/settings'
 
 import styles from './footer.module.css'
 
 export const Footer = () => {
+  const { content, mainNavData, infoNavData, language } = $settings.get()
+
   return (
     <footer className={styles.footer}>
       <Container className={styles.container}>
@@ -45,12 +46,12 @@ export const Footer = () => {
 
         <div className={styles.infoWrapper}>
           <div>
-            <p className={styles.title}>Навигация</p>
+            <p className={styles.title}>{content.navigation}</p>
             <ul className={styles.list}>
               {mainNavData.map(({ label, slug }) => {
                 return (
                   <li className={styles.item} key={label}>
-                    <Link href={slug} className={clsx(styles.link, styles.navLink)}>
+                    <Link href={`/${language}${slug}`} className={clsx(styles.link, styles.navLink)}>
                       {label}
                     </Link>
                   </li>
@@ -60,9 +61,9 @@ export const Footer = () => {
           </div>
 
           <div>
-            <p className={styles.title}>Наши контакты</p>
+            <p className={styles.title}>{content.contacts}</p>
 
-            <p className={styles.subtitle}>Телефоны</p>
+            <p className={styles.subtitle}>{content.phones}</p>
             <a href="tel:89665588499" className={clsx(styles.link, styles.contactLink)}>
               +7 (966) 55 88 499
             </a>
@@ -80,17 +81,17 @@ export const Footer = () => {
           </div>
 
           <div>
-            <p className={styles.title}>Наш адрес</p>
-            <p className={styles.text}>Россия, Ростов-на-Дону ул. Богачева, 16</p>
+            <p className={styles.title}>{content.address}</p>
+            <p className={styles.text}>{content.address}</p>
           </div>
 
           <div>
-            <p className={styles.title}>Информация</p>
+            <p className={styles.title}>{content.info}</p>
             <ul className={styles.list}>
               {infoNavData.map(({ label, slug }) => {
                 return (
                   <li className={styles.item} key={label}>
-                    <Link href={slug} className={clsx(styles.link, styles.navLink)}>
+                    <Link href={`/${language}${slug}`} className={clsx(styles.link, styles.navLink)}>
                       {label}
                     </Link>
                   </li>
@@ -100,7 +101,7 @@ export const Footer = () => {
           </div>
         </div>
 
-        <div className={styles.disclaimer}>© 2021 All rights reserved.</div>
+        <div className={styles.disclaimer}>© {new Date().getFullYear()} All rights reserved.</div>
       </Container>
     </footer>
   )

@@ -1,6 +1,6 @@
 'use client'
 
-import React, { useEffect, useRef, useState } from 'react'
+import React, { ReactNode, useEffect, useRef, useState } from 'react'
 import { FocusTrap, createFocusTrap } from 'focus-trap'
 import { useSearchParams } from 'next/navigation'
 import { usePathname } from 'next/navigation'
@@ -15,13 +15,15 @@ import { HEADER_CHANGE_WIDTH } from '@/shared/constants'
 import { Navigation } from '../../features/navigation'
 import { isTouch } from '@/shared/functions/is-touch'
 import { Hamburger } from '../../features/hamburger'
-import { mainNavData } from '@/app/data/main-nav'
-import { HeaderTopline } from './topline'
 import { HeaderPhone } from './phone'
 
 import styles from './header.module.css'
 
-export const Header = () => {
+type Props = {
+  children: ReactNode
+}
+
+export const Header = ({ children }: Props) => {
   const [isMobileMenuOpened, setMobileMenuOpened] = useState(false)
   const [addClosedClass, setClosedClass] = useState(true)
   const [isAnimationInProgress, setAnimationInProgress] = useState(false)
@@ -84,7 +86,7 @@ export const Header = () => {
 
   return (
     <header className={styles.header} ref={headerElement}>
-      <HeaderTopline />
+      {children}
 
       <Container className={styles.container}>
         <Hamburger
@@ -98,7 +100,6 @@ export const Header = () => {
           onTransitionEnd={handleTransitionEnd}
         >
           <Navigation
-            data={mainNavData}
             isMobileBehaviour={isMobile || isTouch()}
             path={path}
             searchParams={searchParams}

@@ -1,26 +1,28 @@
 import React, { useEffect, useRef, useState } from 'react'
 import { ReadonlyURLSearchParams } from 'next/navigation'
+import { useStore } from '@nanostores/react'
 import Link from 'next/link'
 import clsx from 'clsx'
 
 import { InlineIconCollapse } from '@/shared/components/inline-icon/collapse'
 import { SUBMENU_HIDE_DELAY } from '@/shared/constants'
-import { Item } from '@/shared/types'
+import { $settings } from '@/app/store/settings'
 
 import styles from './navigation.module.css'
 
 type Props = {
-  data: Item[]
   isMobileBehaviour: boolean
-  path: string
-  searchParams: ReadonlyURLSearchParams
+  path: string | null
+  searchParams: ReadonlyURLSearchParams | null
   className?: string
 }
 
-export const Navigation = ({ data, isMobileBehaviour, path, searchParams, className }: Props) => {
+export const Navigation = ({ isMobileBehaviour, path, searchParams, className }: Props) => {
   const [expandedLinkSlug, setExpandedLinkSlug] = useState<string | null>(null)
   const hideTimeout = useRef<number>()
   const isDesktopBehaviour = !isMobileBehaviour
+
+  const { mainNavData, language } = useStore($settings)
 
   const toggleExpandingMenu = (slug: string | null = null) => {
     window.clearTimeout(hideTimeout.current)
@@ -63,7 +65,7 @@ export const Navigation = ({ data, isMobileBehaviour, path, searchParams, classN
   return (
     <nav className={clsx(styles.navigation, className)}>
       <ul className={styles.list}>
-        {data.map(item => {
+        {mainNavData.map(item => {
           const hasSubitems = !!item.subitems
 
           return (
@@ -74,7 +76,7 @@ export const Navigation = ({ data, isMobileBehaviour, path, searchParams, classN
               onPointerOut={() => hasSubitems && handlePointerOut()}
             >
               <Link
-                href={item.slug}
+                href={`/${language}${item.slug}`}
                 {...(hasSubitems && { 'aria-expanded': expandedLinkSlug === item.slug })}
                 className={clsx(styles.link, hasSubitems && styles.linkExpandable)}
                 onPointerDown={e => hasSubitems && handleExpandPointerDown(e, item.slug)}
@@ -90,7 +92,7 @@ export const Navigation = ({ data, isMobileBehaviour, path, searchParams, classN
                   {item.subitems?.map(item => (
                     <li key={item.slug} className={clsx(styles.item, styles.subitem)}>
                       <Link
-                        href={item.slug}
+                        href={`/${language}${item.slug}`}
                         className={clsx(styles.link, item.special && styles.linkSpecial)}
                         onClick={() => toggleExpandingMenu()}
                       >
