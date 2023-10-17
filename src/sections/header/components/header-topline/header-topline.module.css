@@ -8,19 +8,19 @@
   color: var(--color-topline-text);
   font-size: 12px;
   line-height: 1.5;
+
+  & .container {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-top: var(--padding-y);
+    padding-bottom: var(--padding-y);
+  }
 }
 
 .callBack {
   display: none;
-}
-
-.container {
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding-top: var(--padding-y);
-  padding-bottom: var(--padding-y);
 }
 
 .text {

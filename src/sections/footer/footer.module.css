@@ -4,13 +4,13 @@
 .footer {
   background: var(--color-footer-bg);
   color: var(--color-footer-text-primary);
-}
 
-.container {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  padding-top: 46px;
+  & .container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding-top: 46px;
+  }
 }
 
 .icons {
@@ -112,8 +112,10 @@
 }
 
 @media (--viewport-medium) {
-  .container {
-    padding-top: 55px;
+  .footer {
+     & .container {
+      padding-top: 55px;
+    }
   }
 
   .icons {
