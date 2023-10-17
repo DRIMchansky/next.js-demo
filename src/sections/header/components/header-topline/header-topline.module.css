@@ -1,5 +1,5 @@
-@import '../../../shared/styles/media.css';
-@import '../../../shared/styles/mixins.css';
+@import '../../../../shared/styles/media.css';
+@import '../../../../shared/styles/mixins.css';
 
 .topline {
   --padding-y: 9px;

@@ -15,7 +15,7 @@ import { HEADER_CHANGE_WIDTH } from '@/shared/constants'
 import { Navigation } from '../../features/navigation'
 import { isTouch } from '@/shared/functions/is-touch'
 import { Hamburger } from '../../features/hamburger'
-import { HeaderPhone } from './phone'
+import { HeaderPhone } from './components/header-phone'
 
 import styles from './header.module.css'
 

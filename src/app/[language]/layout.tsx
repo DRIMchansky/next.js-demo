@@ -4,7 +4,7 @@ import clsx from 'clsx'
 
 import { SettingsPreloader } from '@/shared/components/settings-preloader'
 import { updateNavLabels } from '@/shared/functions/localization'
-import { HeaderTopline } from '@/sections/header/topline'
+import { HeaderTopline } from '@/sections/header/components/header-topline'
 import { Layout } from '@/shared/components/layout'
 import { fetchContent } from '../sanity/lib/api'
 import { mainNavData } from '../data/main-nav'
