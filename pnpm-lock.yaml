@@ -14,6 +14,9 @@ devDependencies:
   '@nanostores/react':
     specifier: ^0.7.1
     version: 0.7.1(nanostores@0.9.4)(react@18.2.0)
+  '@sanity/asset-utils':
+    specifier: ^1.3.0
+    version: 1.3.0
   '@sanity/image-url':
     specifier: ^1.0.2
     version: 1.0.2
@@ -113,6 +116,9 @@ devDependencies:
   prettier:
     specifier: ^3.0.3
     version: 3.0.3
+  pure-react-carousel:
+    specifier: ^1.30.1
+    version: 1.30.1(react-dom@18.2.0)(react@18.2.0)
   react:
     specifier: 18.2.0
     version: 18.2.0
@@ -7656,8 +7662,17 @@ packages:
       which-typed-array: 1.1.11
     dev: true
 
+  /deep-freeze@0.0.1:
+    resolution: {integrity: sha512-Z+z8HiAvsGwmjqlphnHW5oz6yWlOwu6EQfFTjmeTWlDeda3FS2yv3jhq35TX/ewmsnqB+RX2IdsIOyjJCQN5tg==}
+    dev: true
+
   /deep-is@0.1.4:
     resolution: {integrity: sha512-oIPzksmTg4/MriiaYGO+okXDT7ztn/w3Eptv/+gSIdMdKsJo0u4CfYNFJPy+4SKMuCqGw2wxnA+URMg3t8a/bQ==}
+    dev: true
+
+  /deepmerge@2.2.1:
+    resolution: {integrity: sha512-R9hc1Xa/NOBi9WRVUWg19rl1UB7Tt4kuPd+thNJgFZoxXsTz7ncaPaeIm+40oSGuP33DfMb4sZt1QIGiJzC4EA==}
+    engines: {node: '>=0.10.0'}
     dev: true
 
   /deepmerge@4.3.1:
@@ -7987,6 +8002,12 @@ packages:
     resolution: {integrity: sha512-ZtUjZO6l5mwTHvc1L9+1q5p/R3wTopcfqMW8r5t8SJSKqeVI/LtajORwRFEKpEFuekjD0VBjwu1HMxL4UalIRw==}
     engines: {node: '>=4'}
     hasBin: true
+    dev: true
+
+  /equals@1.0.5:
+    resolution: {integrity: sha512-wI15a6ZoaaXPv+55+Vh2Kqn3+efKRv8QPtcGTjW5xmanMnQzESdAt566jevtMZyt3W/jwLDTzXpMph5ECDJ2zg==}
+    dependencies:
+      jkroso-type: 1.1.1
     dev: true
 
   /error-ex@1.3.2:
@@ -10161,6 +10182,10 @@ packages:
     hasBin: true
     dev: true
 
+  /jkroso-type@1.1.1:
+    resolution: {integrity: sha512-zZgay+fPG6PgMUrpyFADmQmvLo39+AZa7Gc5pZhev2RhDxwANEq2etwD8d0e6rTg5NkwOIlQmaEmns3draC6Ng==}
+    dev: true
+
   /js-tokens@4.0.0:
     resolution: {integrity: sha512-RdJUflcE3cUzKiMqQgsCu06FPu9UdIJO0beYbPhHN4k6apgJtifcoCtT9bcxOpYBtpD2kCM6Sbzg4CausW/PKQ==}
     dev: true
@@ -12234,6 +12259,21 @@ packages:
       - bufferutil
       - supports-color
       - utf-8-validate
+    dev: true
+
+  /pure-react-carousel@1.30.1(react-dom@18.2.0)(react@18.2.0):
+    resolution: {integrity: sha512-B1qi62hZk0OFqRR4cTjtgIeOn/Ls5wo+HsLtrXT4jVf5et8ldBHSt+6LsYRJN86Or8dm+XbnJNEHy6WDJ0/DQw==}
+    peerDependencies:
+      react: 15.x || 16.x || 17.x || 18.x
+      react-dom: 15.x || 16.x || 17.x || 18.x
+    dependencies:
+      '@babel/runtime': 7.23.2
+      deep-freeze: 0.0.1
+      deepmerge: 2.2.1
+      equals: 1.0.5
+      prop-types: 15.8.1
+      react: 18.2.0
+      react-dom: 18.2.0(react@18.2.0)
     dev: true
 
   /qs@6.11.0:

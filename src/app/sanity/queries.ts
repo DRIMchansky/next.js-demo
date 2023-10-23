@@ -1,7 +1,6 @@
 import { groq } from 'next-sanity'
 
 export const generalQuery = groq`*[_type == "general"][0]{
-  ...,
   ${['description', 'address', 'seeAll', 'promotionText', 'promotionButtonText']
     .map(id => {
       return `
@@ -14,7 +13,6 @@ export const generalQuery = groq`*[_type == "general"][0]{
 }`
 
 export const headersQuery = groq`*[_type == "headers"][0]{
-  ...,
   ${[
     'home',
     'aboutUs',
@@ -32,6 +30,21 @@ export const headersQuery = groq`*[_type == "headers"][0]{
     'guarantees',
     'returns'
   ]
+    .map(id => {
+      return `
+    "${id}": coalesce(
+      ${id}[_key == $language][0].value, 
+      ${id}[_key == $defaultLocale][0].value
+    ),`
+    })
+    .join('')}
+}`
+
+export const locksQuery = groq`*[_type == "lock"]{
+  title,
+  poster,
+  isHero,
+  ${['name']
     .map(id => {
       return `
     "${id}": coalesce(
