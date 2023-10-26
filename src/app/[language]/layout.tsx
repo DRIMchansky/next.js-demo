@@ -1,3 +1,4 @@
+import 'pure-react-carousel/dist/react-carousel.es.css'
 import localFont from 'next/font/local'
 import type { Metadata } from 'next'
 import clsx from 'clsx'

@@ -1,0 +1,17 @@
+@import '../../../../shared/styles/media.css';
+
+.nav {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: space-between;
+}
+
+@media (--viewport-small) {
+  .nav {
+    width: auto;
+  }
+}
+
+/* @media (--viewport-medium) {
+} */

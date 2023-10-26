@@ -1,0 +1,40 @@
+@import '../../shared/styles/media.css';
+@import '../../shared/styles/mixins.css';
+
+.hero {
+  display: flex;
+  min-height: 608px;
+  background: var(--color-hero-bg);
+}
+
+/* .container {
+} */
+
+.carousel {
+  position: relative;
+  height: 100%;
+
+  & * {
+    outline: none;
+  }
+
+  & *:focus-visible {
+    box-shadow: 0 0 0 var(--outline-thickness) var(--outline-color);
+  }
+}
+
+.sliderNav {
+  position: absolute;
+  bottom: 25px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+/* @media (--viewport-small) {
+} */
+
+@media (--viewport-medium) {
+  .hero {
+    min-height: 774px;
+  }
+}

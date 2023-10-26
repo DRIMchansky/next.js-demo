@@ -1,0 +1,32 @@
+@import '../../../../shared/styles/media.css';
+
+.slider,
+.trayWrap,
+.tray {
+  height: 100%;
+}
+
+.slideInner {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  overflow-x: hidden;
+}
+
+/* .slideVisible {
+} */
+
+.image {
+  max-width: 100%;
+  height: auto;
+}
+
+@media (--viewport-small) {
+  .slideInner {
+    flex-direction: row;
+    align-items: center;
+  }
+}
+
+/* @media (--viewport-medium) {
+} */

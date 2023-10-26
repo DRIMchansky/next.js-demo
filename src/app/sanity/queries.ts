@@ -1,6 +1,7 @@
 import { groq } from 'next-sanity'
 
 export const generalQuery = groq`*[_type == "general"][0]{
+  title,
   ${['description', 'address', 'seeAll', 'promotionText', 'promotionButtonText']
     .map(id => {
       return `
