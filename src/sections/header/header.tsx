@@ -1,6 +1,6 @@
 'use client'
 
-import React, { ReactNode, useEffect, useRef, useState } from 'react'
+import React, { ReactNode, useCallback, useEffect, useRef, useState } from 'react'
 import { FocusTrap, createFocusTrap } from 'focus-trap'
 import { useSearchParams } from 'next/navigation'
 import { usePathname } from 'next/navigation'
@@ -45,7 +45,7 @@ export const Header = ({ children }: Props) => {
     setClosedClass(!isMobileMenuOpened)
   }
 
-  const toggleMobileMenu = () => {
+  const toggleMobileMenu = useCallback(() => {
     if (isAnimationInProgress) return
 
     setAnimationInProgress(true)
@@ -60,7 +60,7 @@ export const Header = ({ children }: Props) => {
         }),
       20
     )
-  }
+  }, [isAnimationInProgress])
 
   // on mount
   useEffect(() => {
@@ -83,6 +83,20 @@ export const Header = ({ children }: Props) => {
   useEffect(() => {
     htmlElement.current?.classList.toggle('mobile-menu-open', !addClosedClass)
   }, [addClosedClass])
+
+  // close menu on ESC
+  useEffect(() => {
+    const keyDownHandler = (event: KeyboardEvent) => {
+      if (event.key === 'Escape' && isMobileMenuOpened) {
+        event.preventDefault()
+        toggleMobileMenu()
+      }
+    }
+
+    document.addEventListener('keydown', keyDownHandler)
+
+    return () => document.removeEventListener('keydown', keyDownHandler)
+  }, [isMobileMenuOpened, toggleMobileMenu])
 
   return (
     <header className={styles.header} ref={headerElement}>
