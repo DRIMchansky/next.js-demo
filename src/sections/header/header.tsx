@@ -62,6 +62,24 @@ export const Header = ({ children }: Props) => {
     )
   }, [isAnimationInProgress])
 
+  const closeMobileMenu = () => {
+    setClosedClass(true)
+    setMobileMenuOpened(false)
+    focusTrap.current?.deactivate()
+  }
+
+  const onNavigationLinkClick = (slug: string, hasSubitems: boolean) => {
+    const LOCALE_LENGTH = 3
+    const fullPath = `${path}${searchParams?.size ? '?' + searchParams : ''}`
+    const fullPathWithoutLocale =
+      fullPath.length > LOCALE_LENGTH ? fullPath.substring(LOCALE_LENGTH) : fullPath.slice(0, 1)
+    const isSamePath = slug === fullPathWithoutLocale
+
+    if (isSamePath && !hasSubitems) {
+      closeMobileMenu()
+    }
+  }
+
   // on mount
   useEffect(() => {
     updadeHeaderHeightProperty()
@@ -73,11 +91,7 @@ export const Header = ({ children }: Props) => {
   }, [])
 
   // close mobile menu if path or params changed
-  useEffect(() => {
-    setClosedClass(true)
-    setMobileMenuOpened(false)
-    focusTrap.current?.deactivate()
-  }, [path, searchParams])
+  useEffect(closeMobileMenu, [path, searchParams])
 
   // toggle class for prevent scroll when mobile modal is open
   useEffect(() => {
@@ -117,6 +131,7 @@ export const Header = ({ children }: Props) => {
             isMobileBehaviour={isMobile || isTouch()}
             path={path}
             searchParams={searchParams}
+            onNavigationLinkClick={onNavigationLinkClick}
             className={styles.navigation}
           />
           <HeaderPhone className={styles.phone} />
