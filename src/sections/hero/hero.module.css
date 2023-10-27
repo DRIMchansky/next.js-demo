@@ -5,6 +5,7 @@
   display: flex;
   min-height: 608px;
   background: var(--color-hero-bg);
+  color: var(--color-hero-text);
 }
 
 /* .container {

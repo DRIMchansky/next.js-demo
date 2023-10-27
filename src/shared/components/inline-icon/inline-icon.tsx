@@ -6,15 +6,15 @@ export type IconProps = React.SVGAttributes<SVGSVGElement> & {
   ref?: LegacyRef<SVGSVGElement>
 }
 
-export const InlineIcon = ({ className, ref, ...props }: IconProps) => {
+export const InlineIcon = ({ className, ref, viewBox, height, width, ...props }: IconProps) => {
   return (
     <svg
       {...props}
       className={clsx(className)}
       aria-hidden="true"
-      viewBox="0 0 24 24"
-      width={24}
-      height={24}
+      viewBox={viewBox || '0 0 24 24'}
+      width={width || 24}
+      height={height || 24}
       fill="none"
       ref={ref}
     />

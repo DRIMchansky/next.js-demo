@@ -24,7 +24,8 @@ export const Hero = () => {
           totalSlides={heroLocks.length}
           isIntrinsicHeight={true}
           dragEnabled={false}
-          infinite={true}
+          touchEnabled={false}
+          infinite={false}
         >
           <HeroSlider locks={heroLocks} />
           <HeroSliderNav className={styles.sliderNav} />
