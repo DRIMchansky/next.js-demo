@@ -2,6 +2,8 @@ import { getExtension, getImageDimensions } from '@sanity/asset-utils'
 import { SanityAsset } from '@sanity/image-url/lib/types/types'
 import { defineType } from 'sanity'
 
+const IMAGE_SIZE = 1000
+
 export const lock = defineType({
   name: 'lock',
   type: 'document',
@@ -41,7 +43,7 @@ export const lock = defineType({
       name: 'poster',
       title: 'Картинка',
       type: 'image',
-      description: 'В формате .png, 500x500px',
+      description: `В формате .png, ${IMAGE_SIZE}x${IMAGE_SIZE}px`,
       fields: [
         {
           name: 'altText',
@@ -61,8 +63,8 @@ export const lock = defineType({
           }
 
           const { width, height } = getImageDimensions(value.asset._ref)
-          if (width < 500 || height < 500) {
-            return 'Image must be 500x500 pixels'
+          if (width < IMAGE_SIZE || height < IMAGE_SIZE) {
+            return `Image must be ${IMAGE_SIZE}x${IMAGE_SIZE} pixels`
           }
 
           return true

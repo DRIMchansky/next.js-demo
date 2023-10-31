@@ -39,13 +39,15 @@ export const HeroSlider = ({ locks, className }: Props) => {
         >
           <Container className={styles.container}>
             <Image
-              src={getUrlForImage(lock.poster).width(500).url()}
+              src={getUrlForImage(lock.poster).width(500).dpr(2).url()}
               priority
               alt={lock.title}
               width={500}
               height={500}
               className={styles.image}
               autoFocus={false}
+              quality={95}
+              loading="eager"
             />
 
             <HeroContent
