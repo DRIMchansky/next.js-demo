@@ -10,7 +10,7 @@
 
 :root {
   --opacity-link-hover: 0.8;
-  --transition-link-hover: 0.1s;
+  --transition: 0.1s;
 
   --page-padding-x: 16px;
   --page-max-width: 1272px;
@@ -27,6 +27,7 @@
   --color-grey-300: oklch(84.38% 0.015 244.75);
   --color-grey-400: oklch(74.76% 0 0);
   --color-grey-500: oklch(42.34% 0.024 253.08);
+  --color-blue-200: oklch(71.73% 0.141 249.41);
   --color-blue-300: oklch(86.29% 0.071 247.4);
   --color-blue-700: oklch(60.88% 0.192 247.4); /* p3  */
   --color-blue-900: oklch(25.16% 0.045 244.62);
@@ -34,6 +35,15 @@
   --color-primary: oklch(62.02% 0.105 198.89);
   --color-main: oklch(65.53% 0.143 250);
   --color-light: oklch(74.76% 0 0);
+
+  --color-button-primary-origin: var(--color-main);
+  --color-button-primary-hover: var(--color-blue-200);
+  --color-button-primary-active: var(--color-blue-700);
+  --color-button-primary-disabled: var(--color-main);
+  --color-button-primary-text: var(--color-white);
+
+  --color-button-link-text: var(--color-black);
+  --color-button-link-border: var(--color-grey-500);
 
   --color-topline-bg: var(--color-grey-500);
   --color-topline-text: var(--color-white);
@@ -49,6 +59,7 @@
 
   --color-hero-bg: var(--color-grey-50);
   --color-hero-text: var(--color-black);
+  --color-hero-description: var(--color-grey-500);
   --color-hero-slider-dot: var(--color-blue-300);
   --color-hero-slider-dot-active: var(--color-main);
 

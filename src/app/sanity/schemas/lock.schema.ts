@@ -18,6 +18,21 @@ export const lock = defineType({
       title: 'Публичное название'
     },
     {
+      name: 'description',
+      type: 'internationalizedArrayText',
+      title: 'Описание'
+    },
+    {
+      name: 'price',
+      type: 'number',
+      title: 'Обычная цена'
+    },
+    {
+      name: 'priceSale',
+      type: 'number',
+      title: 'Цена по скидке'
+    },
+    {
       name: 'isHero',
       type: 'boolean',
       title: 'Вывести в Hero слайдер'

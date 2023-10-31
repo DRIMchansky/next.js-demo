@@ -16,7 +16,9 @@ export const HeroSliderNav = ({ className }: Props) => {
       <ButtonBack className={styles.button}>
         <InlineIconArrow className={clsx(styles.icon, styles.iconLeft)} />
       </ButtonBack>
+
       <DotGroup className={styles.dots} />
+
       <ButtonNext className={styles.button}>
         <InlineIconArrow className={clsx(styles.icon, styles.iconRight)} />
       </ButtonNext>

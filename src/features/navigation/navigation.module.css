@@ -105,7 +105,7 @@
         background: var(--color-main);
         content: '';
         opacity: 0;
-        transition: opacity var(--transition-link-hover);
+        transition: opacity var(--transition);
       }
 
       &:hover {

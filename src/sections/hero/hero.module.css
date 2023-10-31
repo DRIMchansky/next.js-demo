@@ -3,7 +3,8 @@
 
 .hero {
   display: flex;
-  min-height: 608px;
+  padding-top: 15px;
+  padding-bottom: 30px;
   background: var(--color-hero-bg);
   color: var(--color-hero-text);
 }
@@ -26,16 +27,37 @@
 
 .sliderNav {
   position: absolute;
-  bottom: 25px;
+  bottom: 0;
   left: 50%;
   transform: translateX(-50%);
 }
 
-/* @media (--viewport-small) {
-} */
+@media (--viewport-small) {
+  .hero {
+    padding-top: 25px;
+    padding-bottom: 50px;
+  }
+
+  .sliderNav {
+    bottom: -25px;
+  }
+}
 
 @media (--viewport-medium) {
   .hero {
+    position: relative;
+    display: flex;
     min-height: 774px;
+    align-items: center;
+    padding-top: 0;
+    padding-bottom: 0;
+  }
+
+  .carousel {
+    position: initial;
+  }
+
+  .sliderNav {
+    bottom: 48px;
   }
 }

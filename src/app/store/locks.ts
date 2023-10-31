@@ -2,9 +2,12 @@ import { atom } from 'nanostores'
 import { Image } from 'sanity'
 
 type Lock = {
-  title: string,
-  name: string,
-  isHero: boolean,
+  title: string
+  name: string
+  description: string
+  price: number
+  priceSale?: number
+  isHero: boolean
   poster: Image
 }
 

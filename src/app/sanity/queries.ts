@@ -2,7 +2,7 @@ import { groq } from 'next-sanity'
 
 export const generalQuery = groq`*[_type == "general"][0]{
   title,
-  ${['description', 'address', 'seeAll', 'promotionText', 'promotionButtonText']
+  ${['description', 'address', 'seeAll', 'promotionText', 'promotionButtonText', 'price', 'addToBasket', 'learnMore']
     .map(id => {
       return `
     "${id}": coalesce(
@@ -45,7 +45,9 @@ export const locksQuery = groq`*[_type == "lock"]{
   title,
   poster,
   isHero,
-  ${['name']
+  price,
+  priceSale,
+  ${['name', 'description']
     .map(id => {
       return `
     "${id}": coalesce(

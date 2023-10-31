@@ -3,6 +3,7 @@ import React, { useContext, useEffect, useState } from 'react'
 import Image from 'next/image'
 import clsx from 'clsx'
 
+import { Container } from '@/shared/components/container'
 import { getUrlForImage } from '@/app/sanity/lib/image'
 import { HeroContent } from '../hero-content'
 import { Locks } from '@/app/store/locks'
@@ -36,17 +37,25 @@ export const HeroSlider = ({ locks, className }: Props) => {
           classNameVisible={styles.slideVisible}
           tabIndex={-1}
         >
-          <Image
-            src={getUrlForImage(lock.poster).width(500).url()}
-            priority
-            alt={lock.title}
-            width={500}
-            height={500}
-            className={styles.image}
-            autoFocus={false}
-          />
+          <Container className={styles.container}>
+            <Image
+              src={getUrlForImage(lock.poster).width(500).url()}
+              priority
+              alt={lock.title}
+              width={500}
+              height={500}
+              className={styles.image}
+              autoFocus={false}
+            />
 
-          <HeroContent isCurrent={currentSlide === index} title={lock.title} />
+            <HeroContent
+              isCurrent={currentSlide === index}
+              title={lock.title}
+              description={lock.description}
+              price={lock.price}
+              priceSale={lock.priceSale}
+            />
+          </Container>
         </Slide>
       ))}
     </Slider>

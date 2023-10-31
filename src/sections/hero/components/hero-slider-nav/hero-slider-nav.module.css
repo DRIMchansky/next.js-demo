@@ -85,6 +85,11 @@
 }
 
 @media (--viewport-small) {
+  .icon {
+    width: 32px;
+    height: 32px;
+  }
+
   .dots {
     & :global(.carousel__dot) {
       &:before {
