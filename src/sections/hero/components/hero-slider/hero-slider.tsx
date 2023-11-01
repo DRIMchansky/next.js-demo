@@ -36,6 +36,7 @@ export const HeroSlider = ({ locks, className }: Props) => {
           innerClassName={styles.slideInner}
           classNameVisible={styles.slideVisible}
           tabIndex={-1}
+          aria-label={null}
         >
           <Container className={styles.container}>
             <Image

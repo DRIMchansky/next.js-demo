@@ -39,7 +39,7 @@ export const HeroContent = ({ title, description, price, priceSale, isCurrent, c
           {settings.content.addToBasket}
         </Button>
 
-        <ButtonLink href="#" className={styles.link}>
+        <ButtonLink href="#" className={styles.link} tabIndex={isCurrent ? 0 : -1}>
           {settings.content.learnMore}
         </ButtonLink>
       </div>

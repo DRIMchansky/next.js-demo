@@ -33,7 +33,7 @@
   --color-blue-900: oklch(25.16% 0.045 244.62);
   --color-red-400: oklch(63.16% 0.205 359.35);
   --color-primary: oklch(62.02% 0.105 198.89);
-  --color-main: oklch(65.53% 0.143 250);
+  --color-main: oklch(44.41% 0.146 250.48);
   --color-light: oklch(74.76% 0 0);
 
   --color-button-primary-origin: var(--color-main);

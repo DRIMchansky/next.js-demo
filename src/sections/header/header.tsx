@@ -56,6 +56,7 @@ export const Header = ({ children }: Props) => {
         setMobileMenuOpened(prev => {
           const next = !prev
           next ? focusTrap.current?.activate() : focusTrap.current?.deactivate()
+          next && window.scrollTo({ top: 0 })
           return next
         }),
       20
