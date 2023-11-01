@@ -54,9 +54,6 @@
   text-decoration: line-through;
 }
 
-/* .button {
-} */
-
 .link {
   @mixin link-focus;
   text-decoration: none;

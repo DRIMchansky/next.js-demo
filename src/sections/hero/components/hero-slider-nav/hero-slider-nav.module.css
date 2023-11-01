@@ -2,6 +2,7 @@
 
 .nav {
   --transition: 0.3s;
+  --click-area-size: 48px;
   display: flex;
   width: 100%;
   align-items: center;
@@ -10,8 +11,8 @@
 
 .button {
   display: flex;
-  width: 32px;
-  height: 32px;
+  width: var(--click-area-size);
+  height: var(--click-area-size);
   align-items: center;
   justify-content: center;
   padding: 0;
@@ -25,9 +26,6 @@
   height: 24px;
 }
 
-/* .iconLeft {
-} */
-
 .iconRight {
   transform: rotate(180deg);
 }
@@ -37,8 +35,8 @@
 
   & :global(.carousel__dot) {
     position: relative;
-    width: 32px;
-    height: 32px;
+    width: var(--click-area-size);
+    height: var(--click-area-size);
     padding: 0;
     border: none;
     margin: 0;
@@ -116,6 +114,3 @@
     gap: 5px;
   }
 }
-
-/* @media (--viewport-medium) {
-} */
