@@ -35,8 +35,9 @@ export const HeroSlider = ({ locks, className }: Props) => {
           key={lock.title}
           innerClassName={styles.slideInner}
           classNameVisible={styles.slideVisible}
+          // remove excessive interactive element
           tabIndex={-1}
-          aria-label={null}
+          aria-label={undefined}
         >
           <Container className={styles.container}>
             <Image
