@@ -1,6 +1,6 @@
 'use client'
 
-import React, { ReactNode, useEffect, useRef, useState } from 'react'
+import React, { ReactNode, useCallback, useEffect, useRef, useState } from 'react'
 import { FocusTrap, createFocusTrap } from 'focus-trap'
 import { useSearchParams } from 'next/navigation'
 import { usePathname } from 'next/navigation'
@@ -15,7 +15,7 @@ import { HEADER_CHANGE_WIDTH } from '@/shared/constants'
 import { Navigation } from '../../features/navigation'
 import { isTouch } from '@/shared/functions/is-touch'
 import { Hamburger } from '../../features/hamburger'
-import { HeaderPhone } from './phone'
+import { HeaderPhone } from './components/header-phone'
 
 import styles from './header.module.css'
 
@@ -45,7 +45,7 @@ export const Header = ({ children }: Props) => {
     setClosedClass(!isMobileMenuOpened)
   }
 
-  const toggleMobileMenu = () => {
+  const toggleMobileMenu = useCallback(() => {
     if (isAnimationInProgress) return
 
     setAnimationInProgress(true)
@@ -56,10 +56,29 @@ export const Header = ({ children }: Props) => {
         setMobileMenuOpened(prev => {
           const next = !prev
           next ? focusTrap.current?.activate() : focusTrap.current?.deactivate()
+          next && window.scrollTo({ top: 0 })
           return next
         }),
       20
     )
+  }, [isAnimationInProgress])
+
+  const closeMobileMenu = () => {
+    setClosedClass(true)
+    setMobileMenuOpened(false)
+    focusTrap.current?.deactivate()
+  }
+
+  const onNavigationLinkClick = (slug: string, hasSubitems: boolean) => {
+    const LOCALE_LENGTH = 3
+    const fullPath = `${path}${searchParams?.size ? '?' + searchParams : ''}`
+    const fullPathWithoutLocale =
+      fullPath.length > LOCALE_LENGTH ? fullPath.substring(LOCALE_LENGTH) : fullPath.slice(0, 1)
+    const isSamePath = slug === fullPathWithoutLocale
+
+    if (isSamePath && !hasSubitems) {
+      closeMobileMenu()
+    }
   }
 
   // on mount
@@ -73,16 +92,26 @@ export const Header = ({ children }: Props) => {
   }, [])
 
   // close mobile menu if path or params changed
-  useEffect(() => {
-    setClosedClass(true)
-    setMobileMenuOpened(false)
-    focusTrap.current?.deactivate()
-  }, [path, searchParams])
+  useEffect(closeMobileMenu, [path, searchParams])
 
   // toggle class for prevent scroll when mobile modal is open
   useEffect(() => {
     htmlElement.current?.classList.toggle('mobile-menu-open', !addClosedClass)
   }, [addClosedClass])
+
+  // close menu on ESC
+  useEffect(() => {
+    const keyDownHandler = (event: KeyboardEvent) => {
+      if (event.key === 'Escape' && isMobileMenuOpened) {
+        event.preventDefault()
+        toggleMobileMenu()
+      }
+    }
+
+    document.addEventListener('keydown', keyDownHandler)
+
+    return () => document.removeEventListener('keydown', keyDownHandler)
+  }, [isMobileMenuOpened, toggleMobileMenu])
 
   return (
     <header className={styles.header} ref={headerElement}>
@@ -103,6 +132,7 @@ export const Header = ({ children }: Props) => {
             isMobileBehaviour={isMobile || isTouch()}
             path={path}
             searchParams={searchParams}
+            onNavigationLinkClick={onNavigationLinkClick}
             className={styles.navigation}
           />
           <HeaderPhone className={styles.phone} />

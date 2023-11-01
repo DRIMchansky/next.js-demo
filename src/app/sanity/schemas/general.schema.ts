@@ -33,6 +33,21 @@ export const general = defineType({
       name: 'promotionButtonText',
       type: 'internationalizedArrayString',
       title: 'Текст кнопки промо'
+    },
+    {
+      name: 'price',
+      type: 'internationalizedArrayString',
+      title: 'Цена'
+    },
+    {
+      name: 'addToBasket',
+      type: 'internationalizedArrayString',
+      title: 'Добавить в корзину'
+    },
+    {
+      name: 'learnMore',
+      type: 'internationalizedArrayString',
+      title: 'Узнать больше'
     }
   ]
 })

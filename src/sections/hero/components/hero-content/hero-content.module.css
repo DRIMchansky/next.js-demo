@@ -1,0 +1,123 @@
+@import '../../../../shared/styles/media.css';
+@import '../../../../shared/styles/mixins.css';
+
+.content {
+  width: 100%;
+  padding-bottom: 55px;
+  margin-top: 10px;
+
+  & a:focus-visible {
+    box-shadow: 0 0 0 var(--outline-thickness) var(--outline-color);
+  }
+}
+
+.header {
+  margin: 0;
+  font-size: 22px;
+  font-weight: 600;
+  line-height: 34px;
+  text-align: left;
+  text-wrap: balance;
+}
+
+.buttonBox {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  margin-top: 16px;
+  gap: 8px;
+}
+
+.priceTitle {
+  margin-top: 24px;
+  color: var(--color-hero-description);
+  font-size: 12px;
+  line-height: 22px;
+}
+
+.priceBox {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  margin-top: 4px;
+  gap: 8px;
+}
+
+.price {
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.priceSale {
+  font-size: 14px;
+  font-weight: 300;
+  text-decoration: line-through;
+}
+
+.link {
+  @mixin link-focus;
+  text-decoration: none;
+}
+
+@media (--viewport-medium-and-less) {
+  .description {
+    @mixin visually-hidden;
+  }
+}
+
+@media (--viewport-small) {
+  .header {
+    font-size: 32px;
+  }
+
+  .content {
+    padding-bottom: 0;
+  }
+
+  .buttonBox {
+    flex-direction: row;
+  }
+}
+
+@media (--viewport-medium) {
+  .content {
+    width: 50%;
+  }
+
+  .header {
+    font-size: 44px;
+    line-height: 62px;
+  }
+
+  .description {
+    max-width: 300px;
+    margin: 0;
+    margin-top: 20px;
+    color: var(--color-hero-description);
+    font-size: 14px;
+    line-height: 24px;
+  }
+
+  .priceTitle {
+    margin-top: 32px;
+  }
+
+  .priceBox {
+    margin-top: 4px;
+    gap: 12px;
+  }
+
+  .price {
+    font-size: 24px;
+  }
+
+  .priceSale {
+    font-size: 22px;
+  }
+
+  .buttonBox {
+    flex-direction: row;
+    margin-top: 16px;
+    gap: 12px;
+  }
+}

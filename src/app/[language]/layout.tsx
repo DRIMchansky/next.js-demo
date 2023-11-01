@@ -1,18 +1,20 @@
+import 'pure-react-carousel/dist/react-carousel.es.css'
 import localFont from 'next/font/local'
 import type { Metadata } from 'next'
 import clsx from 'clsx'
 
-import { SettingsPreloader } from '@/shared/components/settings-preloader'
+import { ClientDataPreloader } from '@/shared/components/client-data-preloader'
+import { HeaderTopline } from '@/sections/header/components/header-topline'
 import { updateNavLabels } from '@/shared/functions/localization'
-import { HeaderTopline } from '@/sections/header/topline'
+import { fetchContent, fetchLocks } from '../sanity/lib/api'
 import { Layout } from '@/shared/components/layout'
-import { fetchContent } from '../sanity/lib/api'
 import { mainNavData } from '../data/main-nav'
 import { infoNavData } from '../data/info-nav'
 import { $settings } from '../store/settings'
 import { Header } from '@/sections/header'
 import { Footer } from '@/sections/footer'
 import { PageProps } from '@/shared/types'
+import { $locks } from '../store/locks'
 
 import styles from '../styles/global.module.css'
 import '../styles/globals.css'
@@ -34,7 +36,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 export default async function RootLayout(props: PageProps) {
   const { children, params } = props
 
-  const content = await fetchContent(params.language)
+  const [content, locks] = await Promise.all([fetchContent(params.language), fetchLocks(params.language)])
 
   $settings.set({
     ...$settings.get(),
@@ -44,10 +46,12 @@ export default async function RootLayout(props: PageProps) {
     infoNavData: updateNavLabels(infoNavData, content)
   })
 
+  $locks.set(locks)
+
   return (
     <html lang={params.language}>
       <body className={clsx(openSans.className, styles.body)}>
-        <SettingsPreloader settings={$settings.get()} />
+        <ClientDataPreloader settings={$settings.get()} locks={$locks.get()} />
         <Layout>
           <Header>
             <HeaderTopline />

@@ -1,8 +1,9 @@
 import { createClient } from 'next-sanity'
 
+import { generalQuery, headersQuery, locksQuery } from '../queries'
 import { apiVersion, dataset, projectId, useCdn } from '../env'
-import { generalQuery, headersQuery } from '../queries'
 import { Language, i18n } from '@/app/languages'
+import { Locks } from '@/app/store/locks'
 
 export const baseParams = {
   defaultLocale: i18n.base
@@ -27,4 +28,10 @@ export const fetchContent = async (language: Language): Promise<Record<string, s
     ...generalData,
     ...headersData
   }
+}
+
+export const fetchLocks = async (language: Language): Promise<Locks> => {
+  const queryParams = { ...baseParams, language }
+
+  return await client.fetch<Locks>(locksQuery, queryParams)
 }

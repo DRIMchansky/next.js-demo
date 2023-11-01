@@ -1,5 +1,5 @@
-@import '../../../shared/styles/media.css';
-@import '../../../shared/styles/mixins.css';
+@import '../../../../shared/styles/media.css';
+@import '../../../../shared/styles/mixins.css';
 
 .topline {
   --padding-y: 9px;
@@ -8,19 +8,19 @@
   color: var(--color-topline-text);
   font-size: 12px;
   line-height: 1.5;
+
+  & .container {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-top: var(--padding-y);
+    padding-bottom: var(--padding-y);
+  }
 }
 
 .callBack {
   display: none;
-}
-
-.container {
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding-top: var(--padding-y);
-  padding-bottom: var(--padding-y);
 }
 
 .text {
@@ -48,7 +48,7 @@
     display: inline-block;
     color: var(--color-topline-text);
     text-decoration: none;
-    transition: opacity var(--transition-link-hover);
+    transition: opacity var(--transition);
     &:hover {
       opacity: var(--opacity-link-hover);
     }

@@ -1,3 +1,9 @@
+import { Hero } from '@/sections/hero'
+
 export default function Home() {
-  return <div>Page content</div>
+  return (
+    <div>
+      <Hero />
+    </div>
+  )
 }

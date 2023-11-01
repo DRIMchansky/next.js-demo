@@ -81,7 +81,7 @@ export const Footer = () => {
           </div>
 
           <div>
-            <p className={styles.title}>{content.address}</p>
+            <p className={styles.title}>{content.addressHeader}</p>
             <p className={styles.text}>{content.address}</p>
           </div>
 

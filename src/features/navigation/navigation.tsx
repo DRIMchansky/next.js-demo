@@ -14,10 +14,11 @@ type Props = {
   isMobileBehaviour: boolean
   path: string | null
   searchParams: ReadonlyURLSearchParams | null
+  onNavigationLinkClick: (slug: string, hasSubitems: boolean) => void
   className?: string
 }
 
-export const Navigation = ({ isMobileBehaviour, path, searchParams, className }: Props) => {
+export const Navigation = ({ isMobileBehaviour, path, searchParams, onNavigationLinkClick, className }: Props) => {
   const [expandedLinkSlug, setExpandedLinkSlug] = useState<string | null>(null)
   const hideTimeout = useRef<number>()
   const isDesktopBehaviour = !isMobileBehaviour
@@ -81,7 +82,10 @@ export const Navigation = ({ isMobileBehaviour, path, searchParams, className }:
                 className={clsx(styles.link, hasSubitems && styles.linkExpandable)}
                 onPointerDown={e => hasSubitems && handleExpandPointerDown(e, item.slug)}
                 onKeyDown={e => hasSubitems && handleExpandKeyDown(e, item.slug)}
-                onClick={e => hasSubitems && handleExpandClick(e)}
+                onClick={e => {
+                  onNavigationLinkClick(item.slug, hasSubitems)
+                  hasSubitems && handleExpandClick(e)
+                }}
               >
                 {item.label}
                 {hasSubitems && <InlineIconCollapse className={styles.collapseIcon} />}
@@ -94,7 +98,10 @@ export const Navigation = ({ isMobileBehaviour, path, searchParams, className }:
                       <Link
                         href={`/${language}${item.slug}`}
                         className={clsx(styles.link, item.special && styles.linkSpecial)}
-                        onClick={() => toggleExpandingMenu()}
+                        onClick={() => {
+                          onNavigationLinkClick(item.slug, false)
+                          toggleExpandingMenu()
+                        }}
                       >
                         {item.label}
                       </Link>

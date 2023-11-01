@@ -1,0 +1,40 @@
+@import '../../../../shared/styles/media.css';
+
+.slider,
+.trayWrap,
+.tray {
+  height: 100%;
+}
+
+.slideInner .container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  overflow-x: hidden;
+}
+
+.image {
+  width: 75%;
+  max-width: 300px;
+  height: auto;
+}
+
+@media (--viewport-small) {
+  .slideInner .container {
+    flex-direction: row;
+    align-items: center;
+    gap: 50px;
+  }
+}
+
+@media (--viewport-medium) {
+  .image {
+    max-width: 500px;
+    margin-right: 10px;
+  }
+
+  .slideInner .container {
+    justify-content: flex-end;
+  }
+}

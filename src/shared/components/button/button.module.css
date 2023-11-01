@@ -1,0 +1,38 @@
+@import '../../styles/mixins.css';
+@import '../../styles/media.css';
+
+.button {
+  @mixin button-focus;
+  height: 50px;
+  padding: 0;
+  border: none;
+  cursor: pointer;
+  font-weight: 500;
+  transition: background-color var(--transition);
+
+  &.primary {
+    background: var(--color-button-primary-origin);
+    color: var(--color-button-primary-text);
+
+    @media (hover: hover) {
+      &:not(:disabled):hover {
+        background: var(--color-button-primary-hover);
+      }
+    }
+
+    &:not(:disabled):active {
+      background: var(--color-button-primary-active);
+    }
+
+    &:disabled {
+      background: var(--color-button-primary-disabled);
+      cursor: default;
+    }
+  }
+}
+
+@media (--viewport-small) {
+  .button {
+    width: 220px;
+  }
+}
