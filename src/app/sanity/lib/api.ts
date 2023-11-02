@@ -20,8 +20,8 @@ export const fetchContent = async (language: Language): Promise<Record<string, s
   const queryParams = { ...baseParams, language }
 
   const [generalData, headersData] = await Promise.all([
-    client.fetch<Record<string, string>>(generalQuery, queryParams),
-    client.fetch<Record<string, string>>(headersQuery, queryParams)
+    client.fetch<Record<string, string>>(generalQuery, queryParams, { next: { revalidate: 60 } }),
+    client.fetch<Record<string, string>>(headersQuery, queryParams, { next: { revalidate: 60 } })
   ])
 
   return {
@@ -33,5 +33,5 @@ export const fetchContent = async (language: Language): Promise<Record<string, s
 export const fetchLocks = async (language: Language): Promise<Locks> => {
   const queryParams = { ...baseParams, language }
 
-  return await client.fetch<Locks>(locksQuery, queryParams)
+  return await client.fetch<Locks>(locksQuery, queryParams, { next: { revalidate: 10 } })
 }

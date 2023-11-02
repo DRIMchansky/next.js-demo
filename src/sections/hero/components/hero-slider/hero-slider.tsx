@@ -42,7 +42,7 @@ export const HeroSlider = ({ locks, className }: Props) => {
           <Container className={styles.container}>
             <Image
               src={getUrlForImage(lock.poster).width(500).dpr(2).url()}
-              priority
+              priority={currentSlide === index}
               alt={lock.title}
               width={500}
               height={500}
